@@ -1,132 +1,665 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master')
+@push('css')
+    <link rel="stylesheet" href="{{ asset('assets/demos/kindergarten/kindergarten.css')}}" type="text/css" />
+@endpush
 
-        <title>Laravel</title>
+@section('title')
+    <title>SMKN 1 Situbondo</title>
+@endsection
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}
-        </style>
-
-        <style>
-            body {
-                font-family: 'Nunito';
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
-                    @endif
-                </div>
-            @endif
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
-                </div>
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Build v{{ Illuminate\Foundation\Application::VERSION }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+@section('content')
+<section id="slider" class="slider-element min-vh-md-75 py-4 include-header">
+    <div id="wrapper" class="clearfix">
+    <header id="header" class="transparent-header">
+    <div id="header-wrap" class="">
+    <div class="container">
+    <div class="header-row justify-content-lg-between">
+    
+    <div id="logo" class="me-lg-0 col-lg-3">
+    <a href="index.html" class="standard-logo"><img src="demos/kindergarten/images/logo.svg" alt="Canvas Logo" width="140" style="height: 100px;"></a>
+    <a href="index.html" class="retina-logo"><img src="demos/kindergarten/images/logo.svg" alt="Canvas Logo" width="140" style="height: 100px;"></a>
+    </div>
+    <div class="header-misc col-lg-3 justify-content-end">
+    
+    <a href="https://wa.me/+1122233" target="_blank" class="Whatsapp-icon d-flex align-items-center me-2 text-dark h-text-color font-primary fw-bold h5 mb-0">
+    <i class="icon-whatsapp me-2"></i> <span class="d-none d-md-inline-block">+0-11-475-1433</span>
+    </a>
+    </div>
+    <div id="primary-menu-trigger">
+    <svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+    </div>
+    <nav class="primary-menu">
+    <ul class="menu-container">
+    <li class="menu-item"><a class="menu-link" href="#" style=""><div>Home</div></a></li>
+    <li class="menu-item"><a class="menu-link" href="#" style=""><div>About</div></a></li>
+    <li class="menu-item"><a class="menu-link" href="#" style=""><div>Our Programs</div></a></li>
+    <li class="menu-item"><a class="menu-link" href="#" style=""><div>Contacts</div></a></li>
+    </ul>
+    </nav>
+    </div>
+    </div>
+    </div>
+    <div class="header-wrap-clone" style="height: 101.25px;"></div>
+    </header>
+    
+    <section id="slider" class="slider-element include-header" style="background-color: rgb(253, 227, 161);">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: transparent url('demos/kindergarten/images/hero-bg-icons.svg') center center / cover; opacity: 0.04"></div>
+    <div class="container">
+    <div class="row align-items-center min-vh-100 pt-5 pb-4">
+    <div class="col-lg-6">
+    <h6 class="mb-4 ls1 text-uppercase fw-normal">A Second Home for your Kid</h6>
+    <h1 class="display-3 fw-bolder">Play, Learn and <br> Grow <span class="color">Together..</span></h1>
+    <p class="mt-4 mb-5 fw-light">Rapidiously conceptualize inexpensive value through functionalized markets. Enthusiastically integrate distinctive web services vis-a-vis end-to-end ROI. Assertively fashion best-of-breed products.</p>
+    <a href="#" class="btn text-white bg-color rounded-1 py-3 px-5 fw-medium">Enroll Now <i class="icon-line-arrow-right position-relative" style="top: 2px"></i></a>
+    <a href="https://www.youtube.com/watch?v=P3Huse9K6Xs" class="btn bg-white rounded-1 px-5 py-3 fw-medium ms-2" data-lightbox="iframe"><i class="icon-play-circle me-1" style="position: relative; top: 1px; margin-right: 5px;"></i> Watch Video</a>
+    </div>
+    <div class="col-lg-6 align-self-end mt-5 mt-lg-0">
+    <img src="demos/kindergarten/images/hero.png" alt="Hero Bg">
+    </div>
+    </div>
+    </div>
+    <div class="shape-divider" data-shape="wave-2" data-position="bottom" data-height="80" id="shape-divider-2633"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 27.8" preserveAspectRatio="none" class="op-ts op-1"><path class="shape-divider-fill" d="M283.5,9.7c0,0-7.3,4.3-14,4.6c-6.8,0.3-12.6,0-20.9-1.5c-11.3-2-33.1-10.1-44.7-5.7	s-12.1,4.6-18,7.4c-6.6,3.2-20,9.6-36.6,9.3C131.6,23.5,99.5,7.2,86.3,8c-1.4,0.1-6.6,0.8-10.5,2c-3.8,1.2-9.4,3.8-17,4.7 c-3.2,0.4-8.3,1.1-14.2,0.9c-1.5-0.1-6.3-0.4-12-1.6c-5.7-1.2-11-3.1-15.8-3.7C6.5,9.2,0,10.8,0,10.8V0h283.5V9.7z M260.8,11.3 c-0.7-1-2-0.4-4.3-0.4c-2.3,0-6.1-1.2-5.8-1.1c0.3,0.1,3.1,1.5,6,1.9C259.7,12.2,261.4,12.3,260.8,11.3z M242.4,8.6 c0,0-2.4-0.2-5.6-0.9c-3.2-0.8-10.3-2.8-15.1-3.5c-8.2-1.1-15.8,0-15.1,0.1c0.8,0.1,9.6-0.6,17.6,1.1c3.3,0.7,9.3,2.2,12.4,2.7	C239.9,8.7,242.4,8.6,242.4,8.6z M185.2,8.5c1.7-0.7-13.3,4.7-18.5,6.1c-2.1,0.6-6.2,1.6-10,2c-3.9,0.4-8.9,0.4-8.8,0.5	c0,0.2,5.8,0.8,11.2,0c5.4-0.8,5.2-1.1,7.6-1.6C170.5,14.7,183.5,9.2,185.2,8.5z M199.1,6.9c0.2,0-0.8-0.4-4.8,1.1 c-4,1.5-6.7,3.5-6.9,3.7c-0.2,0.1,3.5-1.8,6.6-3C197,7.5,199,6.9,199.1,6.9z M283,6c-0.1,0.1-1.9,1.1-4.8,2.5s-6.9,2.8-6.7,2.7	c0.2,0,3.5-0.6,7.4-2.5C282.8,6.8,283.1,5.9,283,6z M31.3,11.6c0.1-0.2-1.9-0.2-4.5-1.2s-5.4-1.6-7.8-2C15,7.6,7.3,8.5,7.7,8.6	C8,8.7,15.9,8.3,20.2,9.3c2.2,0.5,2.4,0.5,5.7,1.6S31.2,11.9,31.3,11.6z M73,9.2c0.4-0.1,3.5-1.6,8.4-2.6c4.9-1.1,8.9-0.5,8.9-0.8 c0-0.3-1-0.9-6.2-0.3S72.6,9.3,73,9.2z M71.6,6.7C71.8,6.8,75,5.4,77.3,5c2.3-0.3,1.9-0.5,1.9-0.6c0-0.1-1.1-0.2-2.7,0.2	C74.8,5.1,71.4,6.6,71.6,6.7z M93.6,4.4c0.1,0.2,3.5,0.8,5.6,1.8c2.1,1,1.8,0.6,1.9,0.5c0.1-0.1-0.8-0.8-2.4-1.3	C97.1,4.8,93.5,4.2,93.6,4.4z M65.4,11.1c-0.1,0.3,0.3,0.5,1.9-0.2s2.6-1.3,2.2-1.2s-0.9,0.4-2.5,0.8C65.3,10.9,65.5,10.8,65.4,11.1 z M34.5,12.4c-0.2,0,2.1,0.8,3.3,0.9c1.2,0.1,2,0.1,2-0.2c0-0.3-0.1-0.5-1.6-0.4C36.6,12.8,34.7,12.4,34.5,12.4z M152.2,21.1 c-0.1,0.1-2.4-0.3-7.5-0.3c-5,0-13.6-2.4-17.2-3.5c-3.6-1.1,10,3.9,16.5,4.1C150.5,21.6,152.3,21,152.2,21.1z"></path><path class="shape-divider-fill" d="M269.6,18c-0.1-0.1-4.6,0.3-7.2,0c-7.3-0.7-17-3.2-16.6-2.9c0.4,0.3,13.7,3.1,17,3.3	C267.7,18.8,269.7,18,269.6,18z"></path><path class="shape-divider-fill" d="M227.4,9.8c-0.2-0.1-4.5-1-9.5-1.2c-5-0.2-12.7,0.6-12.3,0.5c0.3-0.1,5.9-1.8,13.3-1.2	S227.6,9.9,227.4,9.8z"></path><path class="shape-divider-fill" d="M204.5,13.4c-0.1-0.1,2-1,3.2-1.1c1.2-0.1,2,0,2,0.3c0,0.3-0.1,0.5-1.6,0.4	C206.4,12.9,204.6,13.5,204.5,13.4z"></path><path class="shape-divider-fill" d="M201,10.6c0-0.1-4.4,1.2-6.3,2.2c-1.9,0.9-6.2,3.1-6.1,3.1c0.1,0.1,4.2-1.6,6.3-2.6	S201,10.7,201,10.6z"></path><path class="shape-divider-fill" d="M154.5,26.7c-0.1-0.1-4.6,0.3-7.2,0c-7.3-0.7-17-3.2-16.6-2.9c0.4,0.3,13.7,3.1,17,3.3	C152.6,27.5,154.6,26.8,154.5,26.7z"></path><path class="shape-divider-fill" d="M41.9,19.3c0,0,1.2-0.3,2.9-0.1c1.7,0.2,5.8,0.9,8.2,0.7c4.2-0.4,7.4-2.7,7-2.6	c-0.4,0-4.3,2.2-8.6,1.9c-1.8-0.1-5.1-0.5-6.7-0.4S41.9,19.3,41.9,19.3z"></path><path class="shape-divider-fill" d="M75.5,12.6c0.2,0.1,2-0.8,4.3-1.1c2.3-0.2,2.1-0.3,2.1-0.5c0-0.1-1.8-0.4-3.4,0	C76.9,11.5,75.3,12.5,75.5,12.6z"></path><path class="shape-divider-fill" d="M15.6,13.2c0-0.1,4.3,0,6.7,0.5c2.4,0.5,5,1.9,5,2c0,0.1-2.7-0.8-5.1-1.4	C19.9,13.7,15.7,13.3,15.6,13.2z"></path></svg></div>
+    <div class="position-relative d-none d-sm-block">
+    <img src="demos/kindergarten/images/fish2.png" alt="Fish" class="background-img pos-right float-anim" style="top: -120px">
+    </div>
+    </section>
+    
+    <section id="content">
+    <div class="content-wrap">
+    <div class="container">
+    <h2 class="color h1 fw-bold mb-5">What services we provide:</h2>
+    <div class="row col-mb-50">
+    <div class="col-lg-8">
+    <div class="row col-mb-50">
+    <div class="col-md-6">
+    <div class="feature-box">
+    <div class="fbox-icon">
+    <img src="demos/kindergarten/images/icons/puzzle.svg" alt="Icon" class="p-2 rounded" style="background-color: #BDE0E0">
+    </div>
+    <div class="fbox-content">
+    <h3 class="nott ls0">Fun Games</h3>
+    <p>Energistically negotiate effective web services after installed base sources. Conveniently productivate.</p>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-6">
+    <div class="feature-box">
+    <div class="fbox-icon mb-4">
+    <img src="demos/kindergarten/images/icons/meal.svg" alt="Icon" class="p-2 rounded" style="background-color: #F9E8DF">
+    </div>
+    <div class="fbox-content">
+    <h3 class="nott ls0">Healthy Meal</h3>
+    <p>Conveniently evolve cross-platform initiatives and interdependent technology dynamically reliable.</p>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-6">
+    <div class="feature-box">
+    <div class="fbox-icon mb-4">
+    <img src="demos/kindergarten/images/icons/teacher.svg" alt="Icon" class="p-2 rounded" style="background-color: #DEE6ED">
+    </div>
+    <div class="fbox-content">
+    <h3 class="nott ls0">Professional Teachers</h3>
+    <p>Enthusiastically mesh reliable products without sustainable resources rapidiously seize.</p>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-6">
+    <div class="feature-box">
+    <div class="fbox-icon mb-4">
+    <img src="demos/kindergarten/images/icons/soap.svg" alt="Icon" class="p-2 rounded" style="background-color: #d6ECCD">
+    </div>
+    <div class="fbox-content">
+    <h3 class="nott ls0">Clean and Sanitized</h3>
+    <p>Enthusiastically disseminate granular schemas vis-a-vis timely collaboration and idea-sharing evisculate.</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 mt-5 mt-lg-0">
+    <div class="card border-0 p-3 rounded-6" style="background-color: #eddee6;">
+    <div class="card-body">
+    <img src="demos/kindergarten/images/card-img.png" alt="Card Image" style="margin-top: -80px;">
+    <h3 class="card-title mt-4">How we care for your child?</h3>
+    <h5 class="fw-normal font-body h6 lh-base mb-0 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus mollitia nemo</h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="section py-6" style="background-color: #F6F3EE;">
+    <div class="shape-divider" data-shape="wave-5" data-height="50" id="shape-divider-2179"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 140" preserveAspectRatio="none" class="op-ts op-1"><path class="shape-divider-fill" d="M0 0v100c20 17.3 40 29.51 80 29.51 51.79 0 74.69-48.57 151.75-48.57 73.72 0 91 54.88 191.56 54.88C543.95 135.8 554 14 665.69 14c109.46 0 98.85 87 188.2 87 70.37 0 69.81-33.73 115.6-33.73 55.85 0 62 39.62 115.6 39.62 58.08 0 57.52-46.59 115-46.59 39.8 0 60 22.48 79.89 39.69V0z"></path></svg></div>
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: url('demos/kindergarten/images/hero-bg-icons.svg') center center / cover; opacity: 0.04"></div>
+    <div class="container py-5">
+    <ul class="nav nav-pills justify-content-around mx-auto mw-sm mb-3 flex-column flex-md-row" role="tablist">
+    <li class="nav-item " role="presentation">
+    <button class="nav-link color1 active" id="age-toddler-tab" data-bs-toggle="pill" data-bs-target="#age-toddler" type="button" role="tab" aria-controls="age-toddler" aria-selected="true">Toddler<span>1.5 - 3 years</span></button>
+    </li>
+    <li class="nav-item " role="presentation">
+    <button class="nav-link color2" id="age-preschool-tab" data-bs-toggle="pill" data-bs-target="#age-preschool" type="button" role="tab" aria-controls="age-preschool" aria-selected="false" tabindex="-1">Preschool<span>2 - 3 years</span></button>
+    </li>
+    <li class="nav-item " role="presentation">
+    <button class="nav-link color3" id="age-kindergarten-tab" data-bs-toggle="pill" data-bs-target="#age-kindergarten" type="button" role="tab" aria-controls="age-kindergarten" aria-selected="false" tabindex="-1">Kindergarten<span>3 - 4 years</span></button>
+    </li>
+    <li class="nav-item " role="presentation">
+    <button class="nav-link color4" id="age-prekindergarten-tab" data-bs-toggle="pill" data-bs-target="#age-prekindergarten" type="button" role="tab" aria-controls="age-prekindergarten" aria-selected="false" tabindex="-1">Pre-Kindergarten <span>4 - 5 years</span></button>
+    </li>
+    </ul>
+    <div class="clear"></div>
+    <div class="tab-content topmargin-sm">
+    <div class="tab-pane fade show active" id="age-toddler" role="tabpanel" aria-labelledby="age-toddler-tab">
+    <div class="row col-mb-30">
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color1">ABC's of Learning</h3>
+    <div class="card-body p-4">
+    Our curriculum is specifically designed to assist your toddler in developing the essentials for early.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    <li class="mb-3">Synergistically disseminate plug-and-play manufactured products without alternative e-tailers. Conveniently pontificate interoperable.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color1">Brain Development</h3>
+    <div class="card-body p-4">
+    Conveniently benchmark flexible human capital for optimal deliverables. Collaboratively fabricate market-driven.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    <li class="mb-3">Synergistically disseminate plug-and-play manufactured products without alternative e-tailers. Conveniently pontificate interoperable.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color1">General Learning</h3>
+    <div class="card-body p-4">
+    Conveniently benchmark flexible human capital for optimal deliverables. Collaboratively fabricate market-driven.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="tab-pane fade" id="age-preschool" role="tabpanel" aria-labelledby="age-preschool-tab">
+    <div class="row col-mb-30">
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color2">ABC's of Learning</h3>
+    <div class="card-body p-4">
+    Our curriculum is specifically designed to assist your toddler in developing the essentials for early.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    <li class="mb-3">Synergistically disseminate plug-and-play manufactured products without alternative e-tailers. Conveniently pontificate interoperable.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color2">Brain Development</h3>
+    <div class="card-body p-4">
+    Conveniently benchmark flexible human capital for optimal deliverables. Collaboratively fabricate market-driven.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    <li class="mb-3">Synergistically disseminate plug-and-play manufactured products without alternative e-tailers. Conveniently pontificate interoperable.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color2">General Learning</h3>
+    <div class="card-body p-4">
+    Conveniently benchmark flexible human capital for optimal deliverables. Collaboratively fabricate market-driven.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="tab-pane fade" id="age-kindergarten" role="tabpanel" aria-labelledby="age-kindergarten-tab">
+    <div class="row col-mb-30">
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color3">ABC's of Learning</h3>
+    <div class="card-body p-4">
+    Our curriculum is specifically designed to assist your toddler in developing the essentials for early.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    <li class="mb-3">Synergistically disseminate plug-and-play manufactured products without alternative e-tailers. Conveniently pontificate interoperable.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color3">Brain Development</h3>
+    <div class="card-body p-4">
+    Conveniently benchmark flexible human capital for optimal deliverables. Collaboratively fabricate market-driven.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    <li class="mb-3">Synergistically disseminate plug-and-play manufactured products without alternative e-tailers. Conveniently pontificate interoperable.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color3">General Learning</h3>
+    <div class="card-body p-4">
+    Conveniently benchmark flexible human capital for optimal deliverables. Collaboratively fabricate market-driven.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="tab-pane fade" id="age-prekindergarten" role="tabpanel" aria-labelledby="age-prekindergarten-tab">
+    <div class="row col-mb-30">
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color4">ABC's of Learning</h3>
+    <div class="card-body p-4">
+    Our curriculum is specifically designed to assist your toddler in developing the essentials for early.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    <li class="mb-3">Synergistically disseminate plug-and-play manufactured products without alternative e-tailers. Conveniently pontificate interoperable.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color4">Brain Development</h3>
+    <div class="card-body p-4">
+    Conveniently benchmark flexible human capital for optimal deliverables. Collaboratively fabricate market-driven.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    <li class="mb-3">Synergistically disseminate plug-and-play manufactured products without alternative e-tailers. Conveniently pontificate interoperable.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+    <div class="card border-0 h-100 shadow-sm">
+    <h3 class="card-header font-primary p-4 color4">General Learning</h3>
+    <div class="card-body p-4">
+    Conveniently benchmark flexible human capital for optimal deliverables. Collaboratively fabricate market-driven.
+    <ul class="ps-3 mt-4 mb-0">
+    <li class="mb-3">Globally whiteboard visionary bandwidth and interactive catalysts for change. Globally repurpose.</li>
+    <li class="mb-3">Professionally revolutionize standardized infomediaries via business methods of empowerment. Collaboratively cultivate.</li>
+    <li class="mb-3">Distinctively parallel task functional internal or "organic" sources and front-end best.</li>
+    <li class="mb-3">Rapidiously customize worldwide channels via accurate e-tailers. Monotonectally re-engineer premium scenarios.</li>
+    </ul>
+    <a href="#" class="more-link fst-normal ms-3">Learn More <i class="icon-line-arrow-right"></i></a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="shape-divider" data-shape="wave-5" data-position="bottom" data-height="60" id="shape-divider-2825"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 140" preserveAspectRatio="none" class="op-ts op-1"><path class="shape-divider-fill" d="M0 0v100c20 17.3 40 29.51 80 29.51 51.79 0 74.69-48.57 151.75-48.57 73.72 0 91 54.88 191.56 54.88C543.95 135.8 554 14 665.69 14c109.46 0 98.85 87 188.2 87 70.37 0 69.81-33.73 115.6-33.73 55.85 0 62 39.62 115.6 39.62 58.08 0 57.52-46.59 115-46.59 39.8 0 60 22.48 79.89 39.69V0z"></path></svg></div>
+    </div>
+    <div class="position-relative d-none d-sm-block">
+    <img src="demos/kindergarten/images/fish1.png" alt="Fish" class="background-img float-anim">
+    </div>
+    <div class="container z-2">
+    <div class="row align-items-center justify-content-center col-mb-30">
+    <div class="col-xl">
+    <h6 class="mb-4 ls2 text-uppercase fw-normal">Testimonials</h6>
+    <h1 class="display-3 fw-bolder">Just watch what <span class="color">Parents</span> say.</h1>
+    <p class="mb-5 fw-light">Rapidiously conceptualize inexpensive value through functionalized markets. Enthusiastically integrate distinctive web services vis-a-vis end-to-end ROI. Assertively fashion best-of-breed products.</p>
+    <a href="#" class="btn btn-outline-dark rounded py-2 px-3">View Full Testimonials</a>
+    </div>
+    <div class="col-auto">
+    <img src="demos/kindergarten/images/kindergarten-tv.svg" alt="Image TV" class="kindergarder-mockup-tv">
+    <div class="kindergarten-carousel-wrap">
+    <div id="kindergarten-carousel-img" class="carousel kindergarten-tv-carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+    <div class="carousel-item">
+    <img class="d-block position-relative w-100" src="demos/kindergarten/images/carousel/1.jpg" alt="First slide">
+    </div>
+    <div class="carousel-item active">
+    <img class="d-block position-relative w-100" src="demos/kindergarten/images/carousel/2.jpg" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+    <img class="d-block position-relative w-100" src="demos/kindergarten/images/carousel/3.jpg" alt="Third slide">
+    </div>
+    </div>
+    </div>
+    <div id="kindergarten-carousel-text" class="carousel kindergarten-tv-carousel slide" data-bs-ride="carousel">
+     <div class="carousel-inner h-100">
+    <div class="carousel-item h-100">
+    <div class="carousel-caption">
+    <h3 class="text-white mb-4 h2">Elon Gated</h3>
+    <a href="https://www.youtube.com/watch?v=P3Huse9K6Xs" data-lightbox="iframe"><i class="icon-line-play ps-1 bg-white rounded-circle text-dark position-relative icon-stacked h4 m-0" style="top: 4px"></i></a>
+    </div>
+    </div>
+    <div class="carousel-item h-100 active">
+    <div class="carousel-caption">
+    <h3 class="text-white mb-4 h2">Quiche Hollandaise</h3>
+    <a href="https://www.youtube.com/watch?v=P3Huse9K6Xs" data-lightbox="iframe"><i class="icon-line-play ps-1 bg-white rounded-circle text-dark position-relative icon-stacked h4 m-0" style="top: 4px"></i></a>
+    </div>
+    </div>
+    <div class="carousel-item h-100">
+    <div class="carousel-caption">
+    <h3 class="text-white mb-4 h2">Eleanor Fant</h3>
+    <a href="https://www.youtube.com/watch?v=P3Huse9K6Xs" data-lightbox="iframe"><i class="icon-line-play ps-1 bg-white rounded-circle text-dark position-relative icon-stacked h4 m-0" style="top: 4px"></i></a>
+    </div>
+    </div>
+    </div>
+    <a class="carousel-control-prev op-09 h-op-1" role="button">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next op-09 h-op-1" role="button">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+    </a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="section" style="padding: 100px 0; background-color: #ECF4F1">
+    <div class="shape-divider" data-shape="wave-5" data-height="50" id="shape-divider-1091"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 140" preserveAspectRatio="none" class="op-ts op-1"><path class="shape-divider-fill" d="M0 0v100c20 17.3 40 29.51 80 29.51 51.79 0 74.69-48.57 151.75-48.57 73.72 0 91 54.88 191.56 54.88C543.95 135.8 554 14 665.69 14c109.46 0 98.85 87 188.2 87 70.37 0 69.81-33.73 115.6-33.73 55.85 0 62 39.62 115.6 39.62 58.08 0 57.52-46.59 115-46.59 39.8 0 60 22.48 79.89 39.69V0z"></path></svg></div>
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: url('demos/kindergarten/images/hero-bg-icons.svg') center center / cover; opacity: 0.04"></div>
+    <div class="container z-3">
+    <h2 class="color text-center h1 fw-bold mb-5 pb-2">Latest News:</h2>
+    <div class="row gutter-50">
+    <div class="col-lg-4">
+    
+    <div class="posts-md">
+    <div class="entry">
+    <div class="entry-image position-relative mb-md-4">
+    <a href="#">
+    <img src="demos/kindergarten/images/news/1.jpg" alt="Image 3" class="rounded-5">
+    <div class="shape-divider" data-shape="wave-5" data-position="bottom" data-width="110" data-height="30" data-fill="#ECF4F1" id="shape-divider-8101"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 140" preserveAspectRatio="none" class="op-ts op-1"><path class="shape-divider-fill" d="M0 0v100c20 17.3 40 29.51 80 29.51 51.79 0 74.69-48.57 151.75-48.57 73.72 0 91 54.88 191.56 54.88C543.95 135.8 554 14 665.69 14c109.46 0 98.85 87 188.2 87 70.37 0 69.81-33.73 115.6-33.73 55.85 0 62 39.62 115.6 39.62 58.08 0 57.52-46.59 115-46.59 39.8 0 60 22.48 79.89 39.69V0z"></path></svg></div>
+    </a>
+    <div class="entry-date">Mar<span>27</span></div>
+    </div>
+    <div class="entry-title nott">
+    <h3><a class="ls0 h3" href="#">Teaching Reading With Online Families</a></h3>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4">
+    
+    <div class="posts-md">
+    <div class="entry">
+    <div class="entry-image position-relative mb-md-4">
+    <a href="#">
+    <img src="demos/kindergarten/images/news/2.jpg" alt="Image 3" class="rounded-5">
+    <div class="shape-divider" data-shape="wave-5" data-position="bottom" data-width="110" data-height="30" data-fill="#ECF4F1" id="shape-divider-7901"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 140" preserveAspectRatio="none" class="op-ts op-1"><path class="shape-divider-fill" d="M0 0v100c20 17.3 40 29.51 80 29.51 51.79 0 74.69-48.57 151.75-48.57 73.72 0 91 54.88 191.56 54.88C543.95 135.8 554 14 665.69 14c109.46 0 98.85 87 188.2 87 70.37 0 69.81-33.73 115.6-33.73 55.85 0 62 39.62 115.6 39.62 58.08 0 57.52-46.59 115-46.59 39.8 0 60 22.48 79.89 39.69V0z"></path></svg></div>
+    </a>
+    <div class="entry-date">Apr<span>03</span></div>
+    </div>
+    <div class="entry-title nott">
+    <h3><a class="ls0 h3" href="#">Mother’s Day and Father’s Day Gift Ideas</a></h3>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4">
+    
+    <div class="posts-md">
+    <div class="entry">
+    <div class="entry-image position-relative mb-md-4">
+    <a href="#">
+    <img src="demos/kindergarten/images/news/3.jpg" alt="Image 3" class="rounded-5">
+    <div class="shape-divider" data-shape="wave-5" data-position="bottom" data-width="110" data-height="30" data-fill="#ECF4F1" id="shape-divider-2219"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 140" preserveAspectRatio="none" class="op-ts op-1"><path class="shape-divider-fill" d="M0 0v100c20 17.3 40 29.51 80 29.51 51.79 0 74.69-48.57 151.75-48.57 73.72 0 91 54.88 191.56 54.88C543.95 135.8 554 14 665.69 14c109.46 0 98.85 87 188.2 87 70.37 0 69.81-33.73 115.6-33.73 55.85 0 62 39.62 115.6 39.62 58.08 0 57.52-46.59 115-46.59 39.8 0 60 22.48 79.89 39.69V0z"></path></svg></div>
+    </a>
+    <div class="entry-date">Jun<span>11</span></div>
+    </div>
+    <div class="entry-title nott">
+    <h3><a class="ls0 h3" href="#">Developing Fine Motor Skills With Crafts</a></h3>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="shape-divider" data-shape="wave-5" data-position="bottom" data-height="60" id="shape-divider-6723"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 140" preserveAspectRatio="none" class="op-ts op-1"><path class="shape-divider-fill" d="M0 0v100c20 17.3 40 29.51 80 29.51 51.79 0 74.69-48.57 151.75-48.57 73.72 0 91 54.88 191.56 54.88C543.95 135.8 554 14 665.69 14c109.46 0 98.85 87 188.2 87 70.37 0 69.81-33.73 115.6-33.73 55.85 0 62 39.62 115.6 39.62 58.08 0 57.52-46.59 115-46.59 39.8 0 60 22.48 79.89 39.69V0z"></path></svg></div>
+    </div>
+    <div class="section bg-transparent">
+    <div class="container">
+    <div class="row gutter-50">
+    <div class="col-lg-6">
+    <img src="demos/kindergarten/images/contact.svg" alt="Image">
+    <div class="row justify-content-between mt-5">
+    <div class="col d-flex">
+    <i class="h6 icon-line-map-pin"></i>:
+    <div class="fw-medium ms-3 font-primary h5 lh-sm">
+    <a class="text-dark h-text-color" href="https://map.google.com" target="_blank">
+    795 Folsom Ave,<br>Suite 600<br>
+    San Francisco, <br>CA 94107<br>
+    </a>
+    <div class="mt-3">
+    <a href="https://facebook.com/semicolonweb" class="social-icon si-small border-default rounded-circle si-facebook" title="Facebook" target="_blank">
+    <i class="icon-facebook"></i>
+    <i class="icon-facebook"></i>
+    </a>
+    <a href="https://instagram.com/semicolonweb" class="social-icon si-small border-default rounded-circle si-instagram" title="instagram" target="_blank">
+    <i class="icon-instagram"></i>
+    <i class="icon-instagram"></i>
+    </a>
+    <a href="https://youtube.com/__semicolonweb" class="social-icon si-small border-default rounded-circle si-google" title="google" target="_blank">
+    <i class="icon-google"></i>
+    <i class="icon-google"></i>
+    </a>
+    </div>
+    </div>
+    </div>
+    <div class="col col-lg-auto">
+    <div class="mb-2 font-primary h5"><i class="h6 icon-line-phone-call me-2">:</i> <a class="text-dark h-text-color" href="tel:08547632521">+(0) 8547 632521</a></div>
+    <div class="mb-2 font-primary h5"><i class="h6 icon-whatsapp me-2">:</i> <a class="text-dark h-text-color" href="https://wa.me/01147521433">+(0) 11 4752 1433</a></div>
+    <div class="mb-2 font-primary h5"><i class="h6 icon-line-mail me-2">:</i> <a class="text-dark h-text-color" href="mailto:noreply@canvas.com">info@canvas.com</a></div>
+    <div class="font-primary h5"><i class="h6 icon-line-link me-2">:</i> <a class="text-dark h-text-color" href="#">canvaskindergarten.com</a></div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <h2 class="color display-4 mb-3 fw-bold">Come and visit us.</h2>
+    <p>Tell us a little bit about your family to get started. Come learn about the Scole experience!</p>
+    <div class="form-widget">
+    <div class="form-result"></div>
+    <form class="mb-0" id="template-contactform" name="template-contactform" action="include/form.php" method="post" novalidate="novalidate">
+    <div class="form-process">
+    <div class="css3-spinner">
+    <div class="css3-spinner-scaler"></div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6 form-group mb-4">
+    <input type="text" id="kindergarten-contactform-first-name" name="kindergarten-contactform-first-name" value="" placeholder="First Name" class="form-control required">
+    </div>
+    <div class="col-md-6 form-group mb-4">
+    <input type="text" id="kindergarten-contactform-last-name" name="kindergarten-contactform-last-name" value="" placeholder="Last Name" class="form-control required">
+    </div>
+    <div class="w-100"></div>
+    <div class="col-12 form-group mb-4">
+    <input type="email" id="kindergarten-contactform-email" name="kindergarten-contactform-email" value="" placeholder="Email" class="required email form-control">
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6 form-group mb-4">
+    <input type="text" id="kindergarten-contactform-phone" name="kindergarten-contactform-phone" value="" placeholder="Phone" class="form-control">
+    </div>
+    <div class="col-md-6 form-group mb-4">
+    <select id="kindergarten-contactform-subject" name="kindergarten-contactform-subject" class="form-select">
+    <option value="" disabled="" selected="">Select Program</option>
+    <option value="Toddler">Toddler</option>
+    <option value="Pre-School">Pre-School</option>
+    <option value="Kindergarten">Kindergarten</option>
+    <option value="Pre-Kindergarten">Pre-Kindergarten</option>
+    <option value="Others">Others</option>
+    </select>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6 form-group mb-4">
+    <input type="text" class="form-control component-flatpickr flatpickr-input" name="kindergarten-contactform-date" placeholder="Date - Time" value="" data-time="true" data-dateformat="d/m/yy - H:i" readonly="readonly">
+    </div>
+    <div class="col-md-6 form-group mb-4">
+    <input type="text" id="kindergarten-contactform-location" name="kindergarten-contactform-location" value="" placeholder="Location" class="required form-control">
+    </div>
+    <div class="w-100"></div>
+    <div class="col-12 form-group mb-4">
+    <textarea class="required form-control py-2" id="kindergarten-contactform-message" placeholder="Write your Message" name="kindergarten-contactform-message" rows="5" cols="30"></textarea>
+    </div>
+    <div class="col-12 form-group d-none">
+    <input type="text" id="kindergarten-contactform-botcheck" name="kindergarten-contactform-botcheck" value="" class="form-control">
+    </div>
+    <div class="col-12 form-group">
+    <button class="btn text-white bg-color rounded-1 py-3 px-5 fw-medium float-end" type="submit" id="kindergarten-contactform-submit" name="kindergarten-contactform-submit" value="submit">Send Message <i class="icon-line-arrow-right position-relative" style="top: 2px"></i></button>
+    </div>
+    </div>
+    <input type="hidden" name="prefix" value="kindergarten-contactform-">
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="container mw-md mb-3 bg-primary" style="background: url('demos/kindergarten/images/subscribe-bg.svg') repeat center center / cover; padding: 80px; border-radius: 2.6rem">
+    <div class="text-center dark">
+    <h3 class="mb-4 h1 fw-bold">Sign up for Updates &amp; Newsletters.</h3>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. <br>Quo aliquid earum tenetur corrupti ea ducimus.</p>
+    </div>
+    <div class="widget subscribe-widget mw-xs mx-auto" data-loader="button">
+    <div class="widget-subscribe-form-result"></div>
+    <form id="widget-subscribe-form" action="include/subscribe.php" method="post" class="mb-0 input-group" novalidate="novalidate">
+    <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control form-control-lg not-dark required email ps-4 border-bottom-0" placeholder="Your Email Address">
+    <button class="btn btn-dark" type="submit">Subscribe Now</button>
+    </form>
+    </div>
+    </div>
+    </div>
+    </section>
+    
+    <footer id="footer" class="border-0" style="background-image: linear-gradient(to top, #61BFDB, #E0F2C2, #FFF);">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: transparent url('demos/kindergarten/images/footer.png') center bottom / cover;"></div>
+    <div class="container" style="padding-bottom: 380px;">
+    <div class="footer-widgets-wrap">
+    <div class="row col-mb-50">
+    <div class="col-lg-1-5 col-4">
+    <div class="widget widget_links">
+    <h3 class="ls0 mb-3 fw-bold">Features</h3>
+    <ul>
+    <li><a href="#" class="h-text-color">Help Center</a></li>
+    <li><a href="#" class="h-text-color">Paid with Moblie</a></li>
+    <li><a href="#" class="h-text-color">Status</a></li>
+    <li><a href="#" class="h-text-color">Changelog</a></li>
+    </ul>
+    </div>
+    </div>
+    <div class="col-lg-1-5 col-4">
+    <div class="widget widget_links">
+    <h3 class="ls0 mb-3 fw-bold">Support</h3>
+    <ul>
+    <li><a href="#" class="h-text-color">Home</a></li>
+    <li><a href="#" class="h-text-color">About</a></li>
+    <li><a href="#" class="h-text-color">FAQs</a></li>
+    <li><a href="#" class="h-text-color">Contact</a></li>
+    </ul>
+    </div>
+    </div>
+    <div class="col-lg-1-5 col-4">
+    <div class="widget widget_links">
+    <h3 class="ls0 mb-3 fw-bold">Trending</h3>
+    <ul>
+    <li><a href="#" class="h-text-color">Shop</a></li>
+    <li><a href="#" class="h-text-color">Portfolio</a></li>
+    <li><a href="#" class="h-text-color">Blog</a></li>
+    <li><a href="#" class="h-text-color">Events</a></li>
+    </ul>
+    </div>
+    </div>
+    <div class="col-lg-1-5 col-6">
+    <div class="widget">
+    <h3 class="ls0 mb-3 fw-bold">Open Hours</h3>
+    <ul class="list-unstyled iconlist ms-0">
+    <li class="mb-2"><a href="#" class="text-dark h-text-color">Monday - Saturday</a></li>
+    <li class="mb-2"><a href="#" class="text-dark h-text-color">6:30 - 20:00</a></li>
+    <li class="mb-2"><a href="#" class="text-dark h-text-color">Sunday Closed</a></li>
+    </ul>
+    </div>
+    </div>
+    <div class="col-lg-1-5 col-6">
+    <div class="widget clearfix">
+    <h3 class="ls0 mb-3 fw-bold">Contact</h3>
+    <div>
+    <address class="font-body text-dark mb-3">
+    795 Folsom Ave, Suite 600<br>
+    San Francisco, CA 94107<br>
+    </address>
+    <div class="mb-1"><i class="h6 icon-line-phone-call me-2">:</i> <a class="text-dark h-text-color" href="tel:08547632521">+(0) 8547 632521</a></div>
+    <div><i class="h6 icon-whatsapp me-2">:</i> <a class="text-dark h-text-color" href="https://wa.me/01147521433">+(0) 11 4752 1433</a></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-auto text-center mt-4 text-smaller pb-3 font-primary">
+    Copyrights © 2014 All Rights Reserved by Canvas Inc.
+    </div>
+    </footer>
+    </div>
+</section>
+@endsection
