@@ -64,15 +64,15 @@
 						<!-- Logo
 						============================================= -->
 						<div id="logo" class="me-lg-0 col-lg-3">
-							<a href="index.html" class="standard-logo"><img src="{{ asset('assets/demos/kindergarten/images/logo.svg') }}" alt="Canvas Logo" width="140"></a>
-							<a href="index.html" class="retina-logo"><img src="{{ asset('assets/demos/kindergarten/images/logo.svg') }}" alt="Canvas Logo" width="140"></a>
+							<a href="index.html" class="standard-logo"><img src="{{ asset('assets/demos/kindergarten/images/logosmkn.png') }}" alt="Canvas Logo" width="140"></a>
+							<a href="index.html" class="retina-logo"><img src="{{ asset('assets/demos/kindergarten/images/logosmkn.png') }}" alt="Canvas Logo" width="140"></a>
 						</div><!-- #logo end -->
 
 						<div class="header-misc col-lg-3 justify-content-end">
 							<!-- WhatsApp Icon
 							============================================= -->
 							<a href="https://wa.me/+1122233" target="_blank" class="Whatsapp-icon d-flex align-items-center me-2 text-dark h-text-color font-primary fw-bold h5 mb-0">
-								<i class="icon-whatsapp me-2"></i> +0-11-475-1433
+							<!--	<i class="icon-whatsapp me-2"></i> +0-11-475-1433 -->
 							</a>
 						</div>
 
@@ -84,32 +84,231 @@
 						<nav class="primary-menu">
 
 							<ul class="menu-container">
-								<li class="menu-item"><a class="menu-link" href="#"><div>Home</div></a></li>
 								<li class="menu-item"><a class="menu-link" href="#">
-									<div>Profil</div>
+									<div>BERANDA</div>
 								</a>
 								<ul class="sub-menu-container" style="">
 									<li class="menu-item" style="">
 										<a class="menu-link" href="{{ url('visi') }}">
-											<div>Visi dan Misi</div>
+											<div>BERITA</div>
 										</a>
 									</li>
 									<li class="menu-item" style="">
 										<a class="menu-link" href="{{ url('regulasi') }}">
-											<div>Dasar Hukum</div>
+											<div>GALERI</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('regulasi') }}">
+											<div>VIDEO</div>
+										</a>
+									</li>
+								</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#">
+									<div>PROFIL</div>
+								</a>
+								<ul class="sub-menu-container" style="">
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('visi') }}">
+											<div>TENTANG SEKOLAH</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('regulasi') }}">
+											<div>VISI DAN MISI</div>
 										</a>
 									</li>
 									<li class="menu-item" style="">
 										<a class="menu-link" href="{{ url('strukturorg') }}">
-											<div>Struktur Organisasi</div>
+											<div>KEPALA SEKOLAH</div>
 										</a>
 									</li>
-
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('strukturorg') }}">
+											<div>KOMPETENSI KEAHLIAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('strukturorg') }}">
+											<div>PRESTASI SEKOLAH</div>
+										</a>
+									</li>
 								</ul>
-							</li>
-								<li class="menu-item"><a class="menu-link" href="#"><div>About</div></a></li>
-								<li class="menu-item"><a class="menu-link" href="#"><div>Our Programs</div></a></li>
-								<li class="menu-item"><a class="menu-link" href="#"><div>Contacts</div></a></li>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#">
+									<div>WAKASEK</div>
+								</a>
+								<ul class="sub-menu-container" style="">
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('visi') }}">
+											<div>WAKA KURIKULUM</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('regulasi') }}">
+											<div>WAKA KESISWAAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('strukturorg') }}">
+											<div>WAKA SARPRAS</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('strukturorg') }}">
+											<div>WAKA HUMAS</div>
+										</a>
+									</li>
+								</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#">
+									<div>DATA</div>
+								</a>
+								<ul class="sub-menu-container" style="">
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('visi') }}">
+											<div>SARPRAS</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('regulasi') }}">
+											<div>GURU</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('strukturorg') }}">
+											<div>TENAGA PENDIDIK</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('strukturorg') }}">
+											<div>SISWA</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('strukturorg') }}">
+											<div>PRESTASI SEKOLAH</div>
+										</a>
+									</li>
+								</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#">
+									<div>INFORMASI</div>
+								</a>
+								<ul class="sub-menu-container" style="">
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('visi') }}">
+											<div>PENGUMUMAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('regulasi') }}">
+											<div>AGENDA KEGIATAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('strukturorg') }}">
+											<div>JADWAL PELAJARAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('strukturorg') }}">
+											<div>JADWAL UJIAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('strukturorg') }}">
+											<div>EKSTRAKURIKULER</div>
+										</a>
+									</li>
+								</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#">
+									<div>OSIS</div>
+								</a>
+								<ul class="sub-menu-container" style="">
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('visi') }}">
+											<div>TENTANG OSIS</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('regulasi') }}">
+											<div>PENGURUS OSIS</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('strukturorg') }}">
+											<div>TENTANG KEGIATAN</div>
+										</a>
+									</li>
+								</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#">
+									<div>APLIKASI SEKOLAH</div>
+								</a>
+								<ul class="sub-menu-container" style="">
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('visi') }}">
+											<div>DAPODIK</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('regulasi') }}">
+											<div>E-RAPOR</div>
+										</a>
+									</li>
+								</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#">
+									<div>PPDB</div>
+								</a>
+								<ul class="sub-menu-container" style="">
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('visi') }}">
+											<div>JALUR ONLINE</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('regulasi') }}">
+											<div>JALUR OFFLINE</div>
+										</a>
+									</li>
+								</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#">
+									<div>OPINI</div>
+								</a>
+								<ul class="sub-menu-container" style="">
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('visi') }}">
+											<div>OPINI GURU</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('regulasi') }}">
+											<div>OPINI SISWA</div>
+										</a>
+									</li>
+								</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#">
+									<div>ADMIN</div>
+								</a>
+								<ul class="sub-menu-container" style="">
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('visi') }}">
+											<div>FORM BERITA</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ url('regulasi') }}">
+											<div>FORM GALERI</div>
+										</a>
+									</li>
+								</ul>
+								</li>
 							</ul>
 
 						</nav><!-- #primary-menu end -->
@@ -129,14 +328,14 @@
 			<div class="container">
 				<div class="row align-items-center min-vh-100 pt-5 pb-4">
 					<div class="col-lg-6">
-						<h6 class="mb-4 ls1 text-uppercase fw-normal">A Second Home for your Kid</h6>
-						<h1 class="display-3 fw-bolder">Play, Learn and <br> Grow <span class="color">Together..</span></h1>
+						<h6 class="mb-4 ls1 text-uppercase fw-normal">Bergabunglah Bersama Kami</h6>
+						<h1 class="display-3 fw-bolder">Solusi Tepat Menjawab Tantangan</h1>
 						<p class="mt-4 mb-5 fw-light">Rapidiously conceptualize inexpensive value through functionalized markets. Enthusiastically integrate distinctive web services vis-a-vis end-to-end ROI. Assertively fashion best-of-breed products.</p>
 						<a href="#" class="btn text-white bg-color rounded-1 py-3 px-5 fw-medium">Enroll Now  <i class="icon-line-arrow-right position-relative" style="top: 2px"></i></a>
 						<a href="https://www.youtube.com/watch?v=P3Huse9K6Xs" class="btn bg-white rounded-1 px-5 py-3 fw-medium ms-2" data-lightbox="iframe"><i class="icon-play-circle me-1" style="position: relative; top: 1px; margin-right: 5px;"></i> Watch Video</a>
 					</div>
 					<div class="col-lg-6 align-self-end mt-5 mt-lg-0">
-						<img src="{{ asset('assets/demos/kindergarten/images/hero.png') }}" alt="Hero Bg">
+						<img src="{{ asset('assets/demos/kindergarten/images/Bu-Susiana.png') }}" alt="Hero Bg">
 					</div>
 				</div>
 			</div>
