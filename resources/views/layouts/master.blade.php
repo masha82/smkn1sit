@@ -319,35 +319,6 @@
 			<div class="header-wrap-clone"></div>
 		</header><!-- #header end -->
 
-		<!-- Hero
-		============================================= -->
-		<section id="slider" class="slider-element include-header" style="background-color: #FDE3A1;">
-
-			<div class="position-absolute top-0 start-0 w-100 h-100" style="background: transparent url('demos/kindergarten/images/hero-bg-icons.svg') center center / cover; opacity: 0.04"></div>
-
-			<div class="container">
-				<div class="row align-items-center min-vh-100 pt-5 pb-4">
-					<div class="col-lg-6">
-						<h6 class="mb-4 ls1 text-uppercase fw-normal">Bergabunglah Bersama Kami</h6>
-						<h1 class="display-3 fw-bolder">Solusi Tepat Menjawab Tantangan</h1>
-						<p class="mt-4 mb-5 fw-light">Rapidiously conceptualize inexpensive value through functionalized markets. Enthusiastically integrate distinctive web services vis-a-vis end-to-end ROI. Assertively fashion best-of-breed products.</p>
-						<a href="#" class="btn text-white bg-color rounded-1 py-3 px-5 fw-medium">Enroll Now  <i class="icon-line-arrow-right position-relative" style="top: 2px"></i></a>
-						<a href="https://www.youtube.com/watch?v=P3Huse9K6Xs" class="btn bg-white rounded-1 px-5 py-3 fw-medium ms-2" data-lightbox="iframe"><i class="icon-play-circle me-1" style="position: relative; top: 1px; margin-right: 5px;"></i> Watch Video</a>
-					</div>
-					<div class="col-lg-6 align-self-end mt-5 mt-lg-0">
-						<img src="{{ asset('assets/demos/kindergarten/images/Bu-Susiana.png') }}" alt="Hero Bg">
-					</div>
-				</div>
-			</div>
-
-			<div class="shape-divider" data-shape="wave-2" data-position="bottom" data-height="80"></div>
-
-			<div class="position-relative d-none d-sm-block">
-				<img src="demos/kindergarten/images/fish2.png" alt="Fish" class="background-img pos-right float-anim" style="top: -120px">
-			</div>
-
-		</section>
-
 		<!-- Content
 		============================================= -->
         <section id="content">
@@ -359,90 +330,7 @@
 
 		<!-- Footer
 		============================================= -->
-		<footer id="footer" class="border-0" style="background-image: linear-gradient(to top, #61BFDB, #E0F2C2, #FFF);">
-
-			<div class="position-absolute top-0 start-0 w-100 h-100" style="background: transparent url('demos/kindergarten/images/footer.png') center bottom / cover;"></div>
-
-			<div class="container" style="padding-bottom: 380px;">
-				<div class="footer-widgets-wrap">
-					<div class="row col-mb-50">
-						<div class="col-lg-1-5 col-4">
-							<div class="widget widget_links">
-
-								<h3 class="ls0 mb-3 fw-bold">Features</h3>
-
-								<ul>
-									<li><a href="#" class="h-text-color">Help Center</a></li>
-									<li><a href="#" class="h-text-color">Paid with Moblie</a></li>
-									<li><a href="#" class="h-text-color">Status</a></li>
-									<li><a href="#" class="h-text-color">Changelog</a></li>
-								</ul>
-
-							</div>
-						</div>
-						<div class="col-lg-1-5 col-4">
-							<div class="widget widget_links">
-
-								<h3 class="ls0 mb-3 fw-bold">Support</h3>
-
-								<ul>
-									<li><a href="#" class="h-text-color">Home</a></li>
-									<li><a href="#" class="h-text-color">About</a></li>
-									<li><a href="#" class="h-text-color">FAQs</a></li>
-									<li><a href="#" class="h-text-color">Contact</a></li>
-								</ul>
-
-							</div>
-						</div>
-						<div class="col-lg-1-5 col-4">
-							<div class="widget widget_links">
-
-								<h3 class="ls0 mb-3 fw-bold">Trending</h3>
-
-								<ul>
-									<li><a href="#" class="h-text-color">Shop</a></li>
-									<li><a href="#" class="h-text-color">Portfolio</a></li>
-									<li><a href="#" class="h-text-color">Blog</a></li>
-									<li><a href="#" class="h-text-color">Events</a></li>
-								</ul>
-
-							</div>
-						</div>
-						<div class="col-lg-1-5 col-6">
-							<div class="widget">
-								<h3 class="ls0 mb-3 fw-bold">Open Hours</h3>
-
-								<ul class="list-unstyled iconlist ms-0">
-									<li class="mb-2"><a href="#" class="text-dark h-text-color">Monday - Saturday</a></li>
-									<li class="mb-2"><a href="#" class="text-dark h-text-color">6:30 - 20:00</a></li>
-									<li class="mb-2"><a href="#" class="text-dark h-text-color">Sunday Closed</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-1-5 col-6">
-							<div class="widget clearfix">
-
-								<h3 class="ls0 mb-3 fw-bold">Contact</h3>
-
-								<div>
-									<address class="font-body text-dark mb-3">
-										795 Folsom Ave, Suite 600<br>
-										San Francisco, CA 94107<br>
-									</address>
-									<div class="mb-1"><i class="h6 icon-line-phone-call me-2">:</i> <a class="text-dark h-text-color" href="tel:08547632521">+(0) 8547 632521</a></div>
-									<div><i class="h6 icon-whatsapp me-2">:</i> <a class="text-dark h-text-color" href="https://wa.me/01147521433">+(0) 11 4752 1433</a></div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-			<div class="col-auto text-center mt-4 text-smaller pb-3 font-primary">
-				Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.
-			</div>
-
+		<footer id="footer" class="border-0">
 		</footer><!-- #footer end -->
 
 	</div><!-- #wrapper end -->
