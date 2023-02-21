@@ -63,18 +63,18 @@
 
 						<!-- Logo
 						============================================= -->
-						<div id="logo" class="me-lg-0 col-lg-3">
+						<div id="logo" class="me-lg-0 col-lg-2">
 							<a href="index.html" class="standard-logo"><img src="{{ asset('assets/demos/kindergarten/images/logosmkn.png') }}" alt="Canvas Logo" width="140"></a>
 							<a href="index.html" class="retina-logo"><img src="{{ asset('assets/demos/kindergarten/images/logosmkn.png') }}" alt="Canvas Logo" width="140"></a>
 						</div><!-- #logo end -->
 
-						<div class="header-misc col-lg-3 justify-content-end">
-							<!-- WhatsApp Icon
-							============================================= -->
+						<!-- <div class="header-misc col-lg-3 justify-content-end">
+							WhatsApp Icon
+							============================================= 
 							<a href="https://wa.me/+1122233" target="_blank" class="Whatsapp-icon d-flex align-items-center me-2 text-dark h-text-color font-primary fw-bold h5 mb-0">
-							<!--	<i class="icon-whatsapp me-2"></i> +0-11-475-1433 -->
-							</a>
-						</div>
+							<i class="icon-whatsapp me-2"></i> +0-11-475-1433 
+							</a> 
+						</div> -->
 
 
 						<div id="primary-menu-trigger">
