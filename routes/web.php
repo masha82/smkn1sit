@@ -22,4 +22,4 @@ Auth::routes();
 
 //resources
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/visi', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('gallery', \App\Http\Controllers\GaleriController::class);

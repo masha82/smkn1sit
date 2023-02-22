@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Berita extends Model
+class Kegiatanosis extends Model
 {
-    protected $table = 'berita';
+    protected $table = 'kegiatan_osis';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['judul', 'kategori', 'isi', 'foto', 'editor'];
+    protected $fillable = ['judul', 'tgl_keg', 'isi', 'foto'];
 }

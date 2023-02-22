@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Berita extends Model
+class Pengumuman extends Model
 {
     protected $table = 'berita';
     /**
@@ -13,5 +13,5 @@ class Berita extends Model
      *
      * @var array
      */
-    protected $fillable = ['judul', 'kategori', 'isi', 'foto', 'editor'];
+    protected $fillable = ['judul', 'isi', 'thumbnail', 'file'];
 }

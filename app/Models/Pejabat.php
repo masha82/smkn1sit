@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pejabat extends Model
 {
-    use HasFactory;
+    protected $table = 'pejabat';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['nama', 'nip', 'jabatan', 'foto'];
 }

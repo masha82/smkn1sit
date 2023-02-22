@@ -65,18 +65,9 @@
 						============================================= -->
 						<div id="logo" class="me-lg-0 col-lg-2">
 							<a href="index.html" class="standard-logo"><img src="{{ asset('assets/demos/kindergarten/images/logosmkn.png') }}" alt="Canvas Logo" width="140"></a>
-							<a href="index.html" class="retina-logo"><img src="{{ asset('assets/demos/kindergarten/images/logosmkn.png') }}" alt="Canvas Logo" width="140"></a>
 						</div><!-- #logo end -->
 
-						<!-- <div class="header-misc col-lg-3 justify-content-end">
-							WhatsApp Icon
-							============================================= 
-							<a href="https://wa.me/+1122233" target="_blank" class="Whatsapp-icon d-flex align-items-center me-2 text-dark h-text-color font-primary fw-bold h5 mb-0">
-							<i class="icon-whatsapp me-2"></i> +0-11-475-1433 
-							</a> 
-						</div> -->
-
-
+							
 						<div id="primary-menu-trigger">
 							<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
 						</div>
@@ -94,7 +85,7 @@
 										</a>
 									</li>
 									<li class="menu-item" style="">
-										<a class="menu-link" href="{{ url('regulasi') }}">
+										<a class="menu-link" href="{{ url('galeri') }}">
 											<div>GALERI</div>
 										</a>
 									</li>

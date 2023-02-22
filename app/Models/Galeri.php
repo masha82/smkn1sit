@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Galeri extends Model
 {
-    use HasFactory;
+    protected $table = 'galeri';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['foto', 'keterangan'];
 }
