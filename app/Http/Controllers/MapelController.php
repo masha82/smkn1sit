@@ -24,7 +24,7 @@ class MapelController extends Controller
      */
     public function create()
     {
-        //
+        return view('formpelajaran');
     }
 
     /**

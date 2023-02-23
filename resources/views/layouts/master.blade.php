@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/font-icons.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}" type="text/css" />
+	
 
 	<!-- Date & Time Picker CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -44,11 +45,11 @@
 	<div class="modal-on-load" data-target="#myModal1"></div>
 
 	<!-- Modal -->
-	<div class="modal1 mfp-hide subscribe-widget" id="myModal1">
+	{{-- <div class="modal1 mfp-hide subscribe-widget" id="myModal1">
 		<a href="#" class="d-flex mx-auto h-scale-sm all-ts" style="max-width: 670px">
 			<img src="{{ asset('assets/demos/kindergarten/images/banner.jpg') }}" alt="Banner Image" class="rounded-4">
 		</a>
-	</div>
+	</div> --}}
 
 	<!-- Document Wrapper
 	============================================= -->
@@ -85,7 +86,7 @@
 										</a>
 									</li>
 									<li class="menu-item" style="">
-										<a class="menu-link" href="{{ url('galeri') }}">
+										<a class="menu-link" href="{{ url('gallery') }}">
 											<div>GALERI</div>
 										</a>
 									</li>
@@ -127,31 +128,10 @@
 									</li>
 								</ul>
 								</li>
-								<li class="menu-item"><a class="menu-link" href="#">
-									<div>WAKASEK</div>
-								</a>
-								<ul class="sub-menu-container" style="">
-									<li class="menu-item" style="">
-										<a class="menu-link" href="{{ url('visi') }}">
-											<div>WAKA KURIKULUM</div>
-										</a>
-									</li>
-									<li class="menu-item" style="">
-										<a class="menu-link" href="{{ url('regulasi') }}">
-											<div>WAKA KESISWAAN</div>
-										</a>
-									</li>
-									<li class="menu-item" style="">
-										<a class="menu-link" href="{{ url('strukturorg') }}">
-											<div>WAKA SARPRAS</div>
-										</a>
-									</li>
-									<li class="menu-item" style="">
-										<a class="menu-link" href="{{ url('strukturorg') }}">
-											<div>WAKA HUMAS</div>
-										</a>
-									</li>
-								</ul>
+								<li class="menu-item" style="">
+									<a class="menu-link" href="{{ url('strukturorg') }}">
+										<div>WAKIL KEPALA SEKOLAH</div>
+									</a>
 								</li>
 								<li class="menu-item"><a class="menu-link" href="#">
 									<div>DATA</div>
@@ -294,7 +274,7 @@
 										</a>
 									</li>
 									<li class="menu-item" style="">
-										<a class="menu-link" href="{{ url('regulasi') }}">
+										<a class="menu-link" href="{{ route('gallery.create') }}">
 											<div>FORM GALERI</div>
 										</a>
 									</li>

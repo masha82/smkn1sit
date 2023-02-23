@@ -24,7 +24,7 @@ class PpdbController extends Controller
      */
     public function create()
     {
-        //
+        return view('formppdb');
     }
 
     /**

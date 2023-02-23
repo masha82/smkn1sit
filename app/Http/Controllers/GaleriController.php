@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use app\Models\Galeri;
 use Illuminate\Http\Request;
 
+
 class GaleriController extends Controller
 {
     /**
@@ -24,7 +25,7 @@ class GaleriController extends Controller
      */
     public function create()
     {
-        //
+        return view('formgaleri');
     }
 
     /**
@@ -35,7 +36,13 @@ class GaleriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $file = $request->file('foto');
+        $new_name = rand() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path("galerifoto"), $new_name);
+        $data['foto'] = $new_name;
+        $data = Galeri::create($data);
+        return redirect()->back()->with(['success' => 'Data berhasil disimpan.']);
     }
 
     /**

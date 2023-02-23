@@ -20,6 +20,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//tabel
+Route::get('/gallery/data', [App\Http\Controllers\GaleriController::class, 'anyData'])->name('gallery.data');
+
 //resources
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('gallery', \App\Http\Controllers\GaleriController::class);

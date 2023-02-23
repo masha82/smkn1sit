@@ -24,7 +24,7 @@ class PrestasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('formprestasi');
     }
 
     /**

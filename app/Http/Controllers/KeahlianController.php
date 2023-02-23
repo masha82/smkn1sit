@@ -24,7 +24,7 @@ class KeahlianController extends Controller
      */
     public function create()
     {
-        //
+        return view('formkeahlian');
     }
 
     /**

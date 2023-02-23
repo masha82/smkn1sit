@@ -24,7 +24,7 @@ class BidangController extends Controller
      */
     public function create()
     {
-        //
+        return view('formbidang');
     }
 
     /**

@@ -24,7 +24,7 @@ class PendidikController extends Controller
      */
     public function create()
     {
-        //
+        return view('formpendidik');
     }
 
     /**

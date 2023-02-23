@@ -24,7 +24,7 @@ class PejabatController extends Controller
      */
     public function create()
     {
-        //
+        return view('formpejabat');
     }
 
     /**

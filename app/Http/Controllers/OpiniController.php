@@ -24,7 +24,7 @@ class OpiniController extends Controller
      */
     public function create()
     {
-        //
+        return view('formopini');
     }
 
     /**

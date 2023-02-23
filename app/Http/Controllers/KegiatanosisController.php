@@ -24,7 +24,7 @@ class KegiatanosisController extends Controller
      */
     public function create()
     {
-        //
+        return view('formkegosis');
     }
 
     /**

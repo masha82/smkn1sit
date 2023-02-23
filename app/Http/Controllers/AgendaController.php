@@ -24,7 +24,7 @@ class AgendaController extends Controller
      */
     public function create()
     {
-        //
+        return view('formagenda');
     }
 
     /**

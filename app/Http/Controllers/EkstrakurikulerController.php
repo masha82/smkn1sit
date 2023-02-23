@@ -24,7 +24,7 @@ class EkstrakurikulerController extends Controller
      */
     public function create()
     {
-        //
+        return view('formekstrakurikuler');
     }
 
     /**

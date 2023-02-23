@@ -24,7 +24,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        return view('formberita');
     }
 
     /**

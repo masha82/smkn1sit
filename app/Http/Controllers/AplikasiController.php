@@ -24,7 +24,7 @@ class AplikasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('formaplikasi');
     }
 
     /**

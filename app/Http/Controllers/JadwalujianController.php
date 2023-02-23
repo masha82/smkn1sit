@@ -24,7 +24,7 @@ class JadwalujianController extends Controller
      */
     public function create()
     {
-        //
+        return view('formjadwalujian');
     }
 
     /**

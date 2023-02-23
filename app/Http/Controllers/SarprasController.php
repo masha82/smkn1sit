@@ -24,7 +24,7 @@ class SarprasController extends Controller
      */
     public function create()
     {
-        //
+        return view('formsarpras');
     }
 
     /**

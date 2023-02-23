@@ -7,8 +7,7 @@
     <div class="col-md-12">
         <div class="container topmargin bottommargin-lg">
             <div class="mx-auto" style="max-width: 700px">
-                <h2 class="mb-2 nott center ls0 gradient-text gradient-horizon">GALERI KEGIATAN KORPRI KABUPATEN
-                    SITUBONDO</h2>
+                <h2 class="mb-2 nott center ls0 gradient-text gradient-horizon">GALERI SMKN 1 SITUBONDO</h2>
             </div>
         </div>
     </div>
@@ -16,7 +15,7 @@
 <div class="row posts-md col-mb-30">
     <div class="masonry-thumbs grid-container grid-4 has-init-isotope" data-big="3" data-lightbox="gallery"
          style="position: relative; height: 295.664px;">
-        @foreach ($galeri as $item)
+        {{-- @foreach ($galeri as $item)
             <a class="grid-item" href="{{ asset('galeri/' . $item->file) }}" data-lightbox="gallery-item"
                style="position: absolute; left: 0%; top: 0px;">
                 <div class="grid-inner">
@@ -31,7 +30,7 @@
                     </div>
                 </div>
             </a>
-        @endforeach
+        @endforeach --}}
     </div>
 </div>
 @endsection

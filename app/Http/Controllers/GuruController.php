@@ -24,7 +24,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        //
+        return view('formguru');
     }
 
     /**
