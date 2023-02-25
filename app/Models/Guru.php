@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Guru extends Model
 {
-    use HasFactory;
+    protected $table = 'guru';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['thn_ajaran','nama_guru', 'nip', 'id_mapel', 'foto'];
 }

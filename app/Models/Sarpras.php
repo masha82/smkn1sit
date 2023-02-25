@@ -13,5 +13,5 @@ class Sarpras extends Model
      *
      * @var array
      */
-    protected $fillable = ['nama_sarpras', 'jenis_ruang', 'panjang', 'lebar', 'kondisi', 'kesesuaian'];
+    protected $fillable = ['nama_sarpras', 'jenis_ruang', 'panjang', 'lebar', 'kondisi', 'kesesuaian', 'foto', 'sarana', 'prasarana'];
 }

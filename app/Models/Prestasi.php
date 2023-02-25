@@ -13,5 +13,5 @@ class Prestasi extends Model
      *
      * @var array
      */
-    protected $fillable = ['nama_prestasi', 'file'];
+    protected $fillable = ['nama_prestasi', 'foto'];
 }

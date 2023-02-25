@@ -14,15 +14,6 @@ class Jadwalpelajaran extends Model
      *
      * @var array
      */
-    protected $fillable = ['kelas', 'file', 'id_keahlian', 'id_guru'];
-    protected $attributes = ['id_keahlian'];
-   /* protected $attributes = ['id_guru']; */
-    protected $with = ['keahlian'];
-    /*protected $with = ['guru']; */
+    protected $fillable = ['thn_ajaran', 'semester', 'file'];
 
-    public function kegiatan(): BelongsTo
-    {
-        return $this->belongsTo(Keahlian::class, 'id_keahlian');
-        /*return $this->belongsTo(Guru::class, 'id_guru'); */
-    }
 }

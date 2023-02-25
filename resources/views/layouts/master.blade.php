@@ -18,7 +18,9 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/font-icons.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}" type="text/css" />
-	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 
 	<!-- Date & Time Picker CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -32,7 +34,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<link rel="stylesheet" href="css/colors.php?color=6953A8" type="text/css" />
-
+	@stack('css')
 	<!-- Document Title
 	============================================= -->
 	@yield('title')
@@ -76,7 +78,7 @@
 						<nav class="primary-menu">
 
 							<ul class="menu-container">
-								<li class="menu-item"><a class="menu-link" href="#">
+								<li class="menu-item"><a class="menu-link" href="{{ url('/') }}">
 									<div>BERANDA</div>
 								</a>
 								<ul class="sub-menu-container" style="">
@@ -269,13 +271,145 @@
 								</a>
 								<ul class="sub-menu-container" style="">
 									<li class="menu-item" style="">
-										<a class="menu-link" href="{{ url('visi') }}">
+										<a class="menu-link" href="{{ route('berita.create') }}">
 											<div>FORM BERITA</div>
 										</a>
 									</li>
 									<li class="menu-item" style="">
 										<a class="menu-link" href="{{ route('gallery.create') }}">
 											<div>FORM GALERI</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('video.create') }}">
+											<div>FORM VIDEO</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('tentangsekolah.create') }}">
+											<div>FORM TENTANG SEKOLAH</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('visidanmisi.create') }}">
+											<div>FORM VISI & MISI SEKOLAH</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('pejabat.create') }}">
+											<div>FORM PEJABAT SEKOLAH</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('jurusan.create') }}">
+											<div>FORM KEAHLIAN/JURUSAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('kompetensi.create') }}">
+											<div>FORM KOMPETENSI KEAHLIAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('achievement.create') }}">
+											<div>FORM PRESTASI SEKOLAH</div>
+										</a>
+									</li>
+								</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#">
+									<div>ADMIN 2</div>
+								</a>
+								<ul class="sub-menu-container" style="">
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('sarana.create') }}">
+											<div>FORM DATA SARPRAS</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('matapelajaran.create') }}">
+											<div>FORM DATA MATA PELAJARAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('gurusekolah.create') }}">
+											<div>FORM DATA GURU</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('bidangpendidik.create') }}">
+											<div>FORM DATA BIDANG PENDIDIK</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('tenagapendidik.create') }}">
+											<div>FORM DATA TENAGA PENDIDIK</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('siswasekolah.create') }}">
+											<div>FORM DATA SISWA</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('infosekolah.create') }}">
+											<div>FORM PENGUMUMAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('agendasekolah.create') }}">
+											<div>FORM AGENDA KEGIATAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('jadwalmapel.create') }}">
+											<div>FORM JADWAL PELAJARAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('jadwalexam.create') }}">
+											<div>FORM JADWAL UJIAN</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('ekskul.create') }}">
+											<div>FORM EKSTRAKURIKULER</div>
+										</a>
+									</li>
+								</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#">
+									<div>ADMIN 3</div>
+								</a>
+								<ul class="sub-menu-container" style="">
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('tentangosis.create') }}">
+											<div>FORM TENTANG OSIS</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('pengurus.create') }}">
+											<div>FORM PENGURUS OSIS</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('kegosis.create') }}">
+											<div>FORM TENTANG KEGIATAN OSIS</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('appschool.create') }}">
+											<div>FORM APLIKASI SEKOLAH</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('infoppdb.create') }}">
+											<div>FORM PPDB</div>
+										</a>
+									</li>
+									<li class="menu-item" style="">
+										<a class="menu-link" href="{{ route('pendapat.create') }}">
+											<div>FORM OPINI</div>
 										</a>
 									</li>
 								</ul>
@@ -305,39 +439,24 @@
 		</footer><!-- #footer end -->
 
 	</div><!-- #wrapper end -->
-
-	<!-- Go To Top
+</body>
+</html>
+<!-- Go To Top
 	============================================= -->
 	<div id="gotoTop" class="icon-hand-up rounded-circle"></div>
 
 	<!-- JavaScripts
 	============================================= -->
+	
 	<script src="{{ asset('assets/js/jquery.js') }}"></script>
 	<script src="{{ asset('assets/js/plugins.min.js') }}"></script>
-
-	<!-- Include Date Range Picker -->
-	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="{{ asset('assets/js/functions.js') }}"></script>
-
-	<script>
-		let carousels = jQuery('#kindergarten-carousel-img, #kindergarten-carousel-text');
-		jQuery('.carousel-control-prev').on( 'click', function(){
-			carousels.carousel('prev');
-		});
-		jQuery('.carousel-control-next').on( 'click', function(){
-			carousels.carousel('next');
-		});
-
-		jQuery(function() {
-			jQuery(".component-flatpickr").flatpickr({
-				enableTime: true,
-				dateFormat: "d/m/yy - H:i",
-			});
-		});
-	</script>
-
-</body>
-</html>
+	@stack('js')

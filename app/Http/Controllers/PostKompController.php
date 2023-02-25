@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ekstrakurikuler;
+use App\Models\Postkompetensi;
 use Illuminate\Http\Request;
 
-class EkstrakurikulerController extends Controller
+class PostKompController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class EkstrakurikulerController extends Controller
      */
     public function index()
     {
-        return view('ekskul');
+        return view('kompetensi');
     }
 
     /**
@@ -24,7 +24,7 @@ class EkstrakurikulerController extends Controller
      */
     public function create()
     {
-        return view('formekskul');
+        return view('formkompetensi');
     }
 
     /**

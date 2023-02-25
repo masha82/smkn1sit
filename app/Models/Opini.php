@@ -13,5 +13,5 @@ class Opini extends Model
      *
      * @var array
      */
-    protected $fillable = ['judul', 'tgl_opini', 'isi', 'editor'];
+    protected $fillable = ['judul', 'tgl_opini', 'isi', 'editor', 'nama_editor'];
 }

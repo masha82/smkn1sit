@@ -13,5 +13,5 @@ class Jadwalujian extends Model
      *
      * @var array
      */
-    protected $fillable = ['judul', 'thumbnail', 'file'];
+    protected $fillable = ['thn_ajaran', 'semester', 'nama_ujian', 'file'];
 }
