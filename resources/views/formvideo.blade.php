@@ -22,8 +22,8 @@
                             @csrf
                             @method('POST')
                             <div class="col-12 form-group">
-                                <label class="form-label" for="customFile">Upload Video:</label>
-                                <input type="file" class="form-control" name="file" id="file"/>
+                                <label class="form-label" for="customFile">Link Video:</label>
+                                <input type="text" class="form-control" name="link" id="file"/>
                             </div>
 
                             <div class="col-12 form-group">

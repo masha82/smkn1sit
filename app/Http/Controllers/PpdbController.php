@@ -35,7 +35,8 @@ class PpdbController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Ppdb::create($request->all());
+        return redirect()->back()->with(['success' => 'Data berhasil disimpan.']);
     }
 
     /**

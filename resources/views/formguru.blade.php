@@ -22,27 +22,20 @@
                             @csrf
                             @method('POST')
                             <div class="col-12 form-group">
-                                <label for="sel1">Tahun Ajaran:</label>
-                                <select class="form-control" name="thn_ajaran" id="thn_ajaran">
-                                    <option><label>-- Pilih Salah Satu --</label></option>
-                                    <option value="1">2022 / 2023</option>
-                                    <option value="2">2023 / 2024</option>
-                                </select>
-                            </div>
-                            <div class="col-12 form-group">
                                 <label>Nama Guru:</label>
                                 <input type="text" name="nama_guru" id="nama_guru" class="form-control">
                             </div>
                             <div class="col-12 form-group">
                                 <label>NIP Guru:</label>
-                                <input type="text" name="nip" id="nip" class="form-control">
+                                <input type="number" name="nip" id="nip" class="form-control">
                             </div>
                             <div class="col-12 form-group">
                                 <label for="sel1">Mata Pelajaran yang diampu:</label>
                                 <select class="form-control" name="id_mapel" id="id_mapel">
                                     <option><label>-- Pilih Salah Satu --</label></option>
-                                    <option value="1">Mapel 1</option>
-                                    <option value="2">Mapel 2</option>
+                                    @foreach($mapel as $item)
+                                        <option value="{{$item->id}}">{{$item->nama_mapel}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-12 form-group">
@@ -92,7 +85,7 @@
                 columns: [{
                     data: 'thn_ajaran',
                     name: 'thn_ajaran'
-                    },
+                },
                     {
                         data: 'nama_guru',
                         name: 'nama_guru'

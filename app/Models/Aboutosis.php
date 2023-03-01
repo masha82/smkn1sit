@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aboutosis extends Model
 {
-    use HasFactory;
+    protected $table = 'osis';
+    protected $fillable = ['tentang', 'foto'];
 }

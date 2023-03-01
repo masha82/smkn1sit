@@ -30,18 +30,29 @@ class PengumumanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $thumbnail = $request->file('thumbnail');
+        $new_name = rand() . '.' . $thumbnail->getClientOriginalExtension();
+        $thumbnail->move(public_path("thumbnail_pengumuman"), $new_name);
+        $data['thumbnail'] = $new_name;
+
+        $file = $request->file('file');
+        $baru = rand() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path("file_pengumuman"), $baru);
+        $data['file'] = $baru;
+        Pengumuman::create($data);
+        return redirect()->back()->with(['success' => 'Data berhasil disimpan.']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -52,7 +63,7 @@ class PengumumanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -63,8 +74,8 @@ class PengumumanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -75,7 +86,7 @@ class PengumumanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

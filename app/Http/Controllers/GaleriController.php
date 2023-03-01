@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use app\Models\Galeri;
+use App\Models\Galeri;
 use Illuminate\Http\Request;
 
 
@@ -31,7 +31,7 @@ class GaleriController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,14 +41,14 @@ class GaleriController extends Controller
         $new_name = rand() . '.' . $file->getClientOriginalExtension();
         $file->move(public_path("galerifoto"), $new_name);
         $data['foto'] = $new_name;
-        $data = Galeri::create($data);
+        Galeri::create($data);
         return redirect()->back()->with(['success' => 'Data berhasil disimpan.']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -59,7 +59,7 @@ class GaleriController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -70,8 +70,8 @@ class GaleriController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -82,7 +82,7 @@ class GaleriController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

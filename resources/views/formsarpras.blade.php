@@ -3,7 +3,8 @@
     {{-- <link rel="stylesheet" href="{{ url('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css') }}"> --}}
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
 @endpush
-@section('title');
+@section('title')
+    ;
     <title>Form Sarana Prasarana</title>
 @endsection
 
@@ -32,20 +33,21 @@
                                 <input type="text" name="jenis_ruang" id="jenis_ruang" class="form-control">
                             </div>
                             <div class="col-12 form-group">
-                                <label>Panjang:</label>
-                                <input type="text" name="panjang" id="panjang" class="form-control">
+                                <label>Panjang (cm):</label>
+                                <input type="number" name="panjang" id="panjang" class="form-control">
                             </div>
                             <div class="col-12 form-group">
-                                <label>Lebar:</label>
-                                <input type="text" name="lebar" id="lebar" class="form-control">
+                                <label>Lebar (cm):</label>
+                                <input type="number" name="lebar" id="lebar" class="form-control">
                             </div>
                             <div class="col-12 form-group">
                                 <label>Kondisi:</label>
-                                <input type="text" name="kondisi" id="kondisi" class="form-control">
-                            </div>
-                            <div class="col-12 form-group">
-                                <label>Kesesuaian:</label>
-                                <input type="text" name="kesesuaian" id="kesesuaian" class="form-control">
+                                <select class="form-control" name="kondisi" id="kondisi">
+                                    <option>-- Pilih Salah Satu --</option>
+                                    <option value="1">Baik</option>
+                                    <option value="2">Rusak Ringan</option>
+                                    <option value="3">Rusak</option>
+                                </select>
                             </div>
                             <div class="col-12 form-group">
                                 <label class="form-label">Upload Foto:</label>
@@ -77,7 +79,6 @@
                                 <th>Panjang</th>
                                 <th>Lebar</th>
                                 <th>Kondisi</th>
-                                <th>Kesesuaian</th>
                                 <th>Foto</th>
                                 <th>Sarana</th>
                                 <th>Prasarana</th>
@@ -98,8 +99,21 @@
     {{-- <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>
         $(document).ready(function () {
+            $('.summernote').summernote({
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['link', ['link']]
+                ]
+            });
             var table = $('#myTable').DataTable({
                 processing: true,
                 serverSide: true,
@@ -107,7 +121,7 @@
                 columns: [{
                     data: 'nama_sarpras',
                     name: 'nama_sarpras'
-                    },
+                },
                     {
                         data: 'jenis_ruang',
                         name: 'jenis_ruang'
@@ -123,10 +137,6 @@
                     {
                         data: 'kondisi',
                         name: 'kondisi'
-                    },
-                    {
-                        data: 'kesesuaian',
-                        name: 'kesesuaian'
                     },
                     {
                         data: 'foto',

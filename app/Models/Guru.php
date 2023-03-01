@@ -13,5 +13,5 @@ class Guru extends Model
      *
      * @var array
      */
-    protected $fillable = ['thn_ajaran','nama_guru', 'nip', 'id_mapel', 'foto'];
+    protected $fillable = ['nama_guru', 'nip', 'id_mapel', 'foto'];
 }

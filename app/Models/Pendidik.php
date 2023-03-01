@@ -14,4 +14,5 @@ class Pendidik extends Model
      * @var array
      */
     protected $fillable = ['nama_pendidik', 'nip', 'id_bidang', 'foto'];
+    protected $attributes = ['nip' => null];
 }

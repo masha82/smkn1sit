@@ -32,9 +32,11 @@
                             <div class="col-12 form-group">
                                 <label for="sel1">Bidang:</label>
                                 <select class="form-control" name="id_bidang" id="id_bidang">
-                                    <option><label>-- Pilih Salah Satu --</label></option>
-                                    <option value="1">Bidang 1</option>
-                                    <option value="2">Bidang 2</option>
+                                    <option>-- Pilih Salah Satu --</option>
+                                    @foreach($bidang as $item)
+                                        <option value="{{$item->id}}">{{$item->nama_bidang}}</option>
+                                    @endforeach
+
                                 </select>
                             </div>
                             <div class="col-12 form-group">
@@ -84,7 +86,7 @@
                 columns: [{
                     data: 'nama_pendidik',
                     name: 'nama_pendidik'
-                    },
+                },
                     {
                         data: 'nip',
                         name: 'nip'

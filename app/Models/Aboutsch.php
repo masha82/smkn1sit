@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aboutsch extends Model
 {
-    use HasFactory;
+    protected $table = 'school';
+    protected $fillable = ['tentang', 'foto'];
 }

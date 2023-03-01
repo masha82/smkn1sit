@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @push('css')
-    
+
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
 @endpush
 @section('title')
@@ -25,8 +25,11 @@
                                 <label for="sel1">Tahun Ajaran:</label>
                                 <select class="form-control" name="thn_ajaran" id="thn_ajaran">
                                     <option><label>-- Pilih Salah Satu --</label></option>
-                                    <option value="1">2022 / 2023</option>
-                                    <option value="2">2023 / 2024</option>
+                                    @for($i=0;$i<=2;$i++)
+                                        <option
+                                            value="{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}">{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}
+                                            - {{\Carbon\Carbon::now()->subYear($i)->format('Y') +1}}</option>
+                                    @endfor
                                 </select>
                             </div>
                             <div class="col-12 form-group">
@@ -71,7 +74,6 @@
     </section>
 @endsection
 @push('js')
-
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
     <script>

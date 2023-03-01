@@ -35,7 +35,8 @@ class OpiniController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Opini::create($request->all());
+        return redirect()->back()->with(['success' => 'Data berhasil disimpan.']);
     }
 
     /**

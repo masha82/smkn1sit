@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Visi extends Model
 {
-    use HasFactory;
+    protected $table = 'visi';
+    protected $fillable = ['visi', 'misi'];
 }

@@ -35,8 +35,13 @@ class AboutosisController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $data = $request->all();
+        $file = $request->file('foto');
+        $new_name = rand() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path("foto_osis"), $new_name);
+        $data['foto'] = $new_name;
+        Aboutosis::create($data);
+        return redirect()->back()->with(['success' => 'Data berhasil disimpan.']);    }
 
     /**
      * Display the specified resource.

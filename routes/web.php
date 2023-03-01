@@ -70,7 +70,6 @@ Route::resource('pejabat', \App\Http\Controllers\PejabatController::class);
 Route::resource('jurusan', \App\Http\Controllers\KeahlianController::class);
 Route::resource('kompetensi', \App\Http\Controllers\PostKompController::class);
 Route::resource('achievement', \App\Http\Controllers\PrestasiController::class);
-Route::resource('wakasekolah', \App\Http\Controllers\PejabatController::class);
 Route::resource('sarana', \App\Http\Controllers\SarprasController::class);
 Route::resource('matapelajaran', \App\Http\Controllers\MapelController::class);
 Route::resource('gurusekolah', \App\Http\Controllers\GuruController::class);

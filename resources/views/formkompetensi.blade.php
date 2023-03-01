@@ -24,20 +24,15 @@
                             <div class="col-12 form-group">
                                 <label for="sel1">Nama Keahlian/Jurusan:</label>
                                 <select class="form-control" name="id_keahlian" id="id_keahlian">
-                                    <option><label>-- Pilih Salah Satu --</label></option>
-                                    <option value="1">Kriya Kreatif logam dan Perhiasan (DPKL)</option>
-                                    <option value="2">Teknik Elektronika Industri (TEI)</option>
-                                    <option value="3">Teknik Komputer dan Jaringan (TKJ)</option>
-                                    <option value="4">Desain Pemodelan dan Informasi Bangunan (TGB)</option>
-                                    <option value="5">Teknik dan Bisnis Sepeda Motor (TSM)</option>
-                                    <option value="6">Perbankan Syariah (PBS)</option>
-                                    <option value="7">Teknik Instalasi Tenaga Listrik (TITL)</option>
-                                    <option value="8">Teknik Kendaraan Ringan Otomotif (TKRO)</option>
+                                    <option>-- Pilih Salah Satu --</option>
+                                    @foreach($keahlian as $item)
+                                        <option value="{{$item->id}}">{{$item->nama_keahlian}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-12 form-group">
                                 <label>Tentang Keahlian/Jurusan:</label>
-                                <input type="text" name="isi" id="isi" class="form-control">
+                                <textarea name="isi" id="isi" class="form-control summernote"></textarea>
                             </div>
                             <div class="col-12 form-group">
                                 <label class="form-label" for="customFile">Upload Foto:</label>
@@ -73,11 +68,30 @@
     </section>
 @endsection
 @push('js')
-    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+    <script
+        src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}
+                                        "></script>
+    <script
+        src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}
+                                        "></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>
         $(document).ready(function () {
+            $('.summernote').summernote({
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['link', ['link']]
+                ]
+            });
             var table = $('#myTable').DataTable({
                 processing: true,
                 serverSide: true,
@@ -85,7 +99,7 @@
                 columns: [{
                     data: 'id_keahlian',
                     name: 'id_keahlian'
-                    },
+                },
                     {
                         data: 'isi',
                         name: 'isi'

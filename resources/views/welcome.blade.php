@@ -47,15 +47,12 @@
                 <div class="container">
                     <div class="row align-items-center min-vh-100 pt-5 pb-4">
                         <div class="col-lg-6">
-                            <h6 class="mb-4 ls1 text-uppercase fw-normal">Bergabunglah Bersama Kami</h6>
+                            <br><h6 class="mb-4 ls1 text-uppercase fw-normal">Bergabunglah Bersama Kami</h6>
                             <h1 class="display-3 fw-bolder">Solusi Tepat Menjawab Tantangan</h1>
-                            <p class="mt-4 mb-5 fw-light">Rapidiously conceptualize inexpensive value through functionalized
-                                markets. Enthusiastically integrate distinctive web services vis-a-vis end-to-end ROI.
-                                Assertively fashion best-of-breed products.</p>
-                            <!--
-                    <a href="#" class="btn text-white bg-color rounded-1 py-3 px-5 fw-medium">Enroll Now  <i class="icon-line-arrow-right position-relative" style="top: 2px"></i></a>
-                    <a href="https://www.youtube.com/watch?v=P3Huse9K6Xs" class="btn bg-white rounded-1 px-5 py-3 fw-medium ms-2" data-lightbox="iframe"><i class="icon-play-circle me-1" style="position: relative; top: 1px; margin-right: 5px;"></i> Watch Video</a>
-                    -->
+                            <p class="mt-4 mb-5 fw-light">Assalamualaikum Warahmatullah Wabarakatuh <br>
+                                Puji Syukur ke hadirat Allah SWT, karena berkat karunia rahmat dan hidayah-Nya, pada akhirnya website SMK Negeri 1 Situbondo dapat diluncurkan di dunia maya.
+                                Mudah-mudahan dengan optimalisasi penggunaan internet dan website ini peningkatan mutu pendidikan dan komunikasi global dapat segera terwujud.<br>
+                                Wassalamualaikum Warahmatullah Wabarakatuh</p>
                         </div>
                         <div class="col-lg-6 align-self-end mt-5 mt-lg-0">
                             <img src="{{ asset('assets/demos/kindergarten/images/Bu-Susiana.png') }}" alt="Hero Bg">

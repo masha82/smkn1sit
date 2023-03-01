@@ -22,11 +22,14 @@
                             @csrf
                             @method('POST')
                             <div class="col-12 form-group">
-                                <label for="sel1">Tahun Ajaran:</label>
+                                <label for="sel1">Tahun Ajaran: </label>
                                 <select class="form-control" name="thn_ajaran" id="thn_ajaran">
                                     <option><label>-- Pilih Salah Satu --</label></option>
-                                    <option value="1">2022 / 2023</option>
-                                    <option value="2">2023 / 2024</option>
+                                    @for($i=0;$i<=2;$i++)
+                                        <option
+                                            value="{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}">{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}
+                                            - {{\Carbon\Carbon::now()->subYear($i)->format('Y') +1}}</option>
+                                    @endfor
                                 </select>
                             </div>
                             <div class="col-12 form-group">
@@ -42,22 +45,17 @@
                                 <label for="sel1">Nama Keahlian/Jurusan:</label>
                                 <select class="form-control" name="id_keahlian" id="id_keahlian">
                                     <option><label>-- Pilih Salah Satu --</label></option>
-                                    <option value="1">Kriya Kreatif logam dan Perhiasan (DPKL)</option>
-                                    <option value="2">Teknik Elektronika Industri (TEI)</option>
-                                    <option value="3">Teknik Komputer dan Jaringan (TKJ)</option>
-                                    <option value="4">Desain Pemodelan dan Informasi Bangunan (TGB)</option>
-                                    <option value="5">Teknik dan Bisnis Sepeda Motor (TSM)</option>
-                                    <option value="6">Perbankan Syariah (PBS)</option>
-                                    <option value="7">Teknik Instalasi Tenaga Listrik (TITL)</option>
-                                    <option value="8">Teknik Kendaraan Ringan Otomotif (TKRO)</option>
+                                    @foreach($keahlian as $item)
+                                        <option value="{{$item->id}}">{{$item->nama_keahlian}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-12 form-group">
                                 <label>Jumlah Siswa:</label>
-                                <input type="text" name="jumlah" id="jumlah" class="form-control">
+                                <input type="number" name="jumlah" id="jumlah" class="form-control">
                             </div>
                             <div class="col-12 form-group">
-                                <label >Link untuk download data:</label>
+                                <label>Link untuk download data:</label>
                                 <input type="text" class="form-control" name="link" id="link"/>
                             </div>
                             <div class="col-12">
@@ -104,7 +102,7 @@
                 columns: [{
                     data: 'thn_ajaran',
                     name: 'thn_ajaran'
-                    },
+                },
                     {
                         data: 'kelas',
                         name: 'kelas'

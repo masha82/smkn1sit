@@ -17,7 +17,7 @@
                         </div>
                     @endif
                     <div class="col-lg-6">
-                        <form class="row" action="{{ route('tentangsekolah.store') }}" method="post"
+                        <form class="row" action="{{ route('tentangosis.store') }}" method="post"
                               enctype="multipart/form-data">
                             @csrf
                             @method('POST')
@@ -121,3 +121,4 @@
         });
     </script>
 @endpush
+w
