@@ -15,7 +15,9 @@ class PostKompController extends Controller
      */
     public function index()
     {
-        return view('kompetensi');
+        $kompetensi = Postkompetensi::with('keahlian')->get();
+        $keahlian = Keahlian::all();
+        return view('kompetensi', compact('keahlian', 'kompetensi'));
     }
 
     /**
