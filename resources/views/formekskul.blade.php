@@ -7,6 +7,11 @@
     <title>Form Ekstrakurikuler</title>
 @endsection
 @section('content')
+    <section id="page-title">    
+        <div class="container clearfix">
+            <h1>Form Ekstrakurikuler</h1>
+        </div>
+    </section>
     <section id="content">
         <div class="content-wrap">
             <div class="container clearfix">

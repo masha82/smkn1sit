@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Traits\Table;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class AgendaController extends Controller
 {
@@ -12,9 +14,12 @@ class AgendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use Table;
+    protected $model = Agenda::class;
     public function index()
     {
-        return view('agenda');
+        $agenda = Agenda::orderBy('created_at', 'DESC')->first();
+        return view('agenda', compact('agenda'));
     }
 
     /**
@@ -84,8 +89,18 @@ class AgendaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function anyData(Request $request)
     {
-        //
+        return DataTables::of($this->model::query())
+            ->addColumn('file', function ($data) {
+                $del = '<img src="' . asset('gambar_agenda/' . $data->file) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+                return  $del;
+            })
+            ->addColumn('action', function ($data) {
+                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
+                return  $del;
+            })
+            ->rawColumns(['file', 'action'])
+            ->make(true);
     }
 }

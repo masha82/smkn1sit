@@ -7,6 +7,11 @@
     <title>Form Alamat URL PPDB</title>
 @endsection
 @section('content')
+    <section id="page-title">    
+        <div class="container clearfix">
+            <h1>Form Alamat URL PPDB</h1>
+        </div>
+    </section>
     <section id="content">
         <div class="content-wrap">
             <div class="container clearfix">

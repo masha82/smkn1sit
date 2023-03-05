@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aboutsch;
+use App\Traits\Table;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class AboutschoolController extends Controller
 {
@@ -12,8 +14,11 @@ class AboutschoolController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use Table;
+    protected $model = Aboutsch::class;
     public function index()
     {
+        $aboutsch = Aboutsch::orderBy('created_at', 'DESC')->first();
         return view('school');
     }
 
@@ -84,8 +89,18 @@ class AboutschoolController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function anyData(Request $request)
     {
-        //
+        return DataTables::of($this->model::query())
+            ->addColumn('file', function ($data) {
+                $del = '<img src="' . asset('gambar_about/' . $data->file) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+                return  $del;
+            })
+            ->addColumn('action', function ($data) {
+                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
+                return  $del;
+            })
+            ->rawColumns(['file', 'action'])
+            ->make(true);
     }
 }

@@ -7,6 +7,11 @@
     <title>Form Upload Link Video</title>
 @endsection
 @section('content')
+    <section id="page-title">    
+        <div class="container clearfix">
+            <h1>Form Upload Link Video</h1>
+        </div>
+    </section>
     <section id="content">
         <div class="content-wrap">
             <div class="container clearfix">

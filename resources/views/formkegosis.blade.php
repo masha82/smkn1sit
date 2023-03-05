@@ -4,9 +4,14 @@
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
 @endpush
 @section('title')
-    <title>Form Pengurus OSIS</title>
+    <title>Form Kegiatan OSIS</title>
 @endsection
 @section('content')
+<section id="page-title">    
+    <div class="container clearfix">
+        <h1>Form Kegiatan OSIS</h1>
+    </div>
+</section>
     <section id="content">
         <div class="content-wrap">
             <div class="container clearfix">
