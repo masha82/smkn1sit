@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @push('css')
-    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{ url('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
 @endpush
 @section('title')
@@ -50,14 +50,14 @@
 
                 </div>
                 <div class="row">
-                    <h6 class="text-center">Daftar Agenda Kegiatan</h6>
+                    <h3 class="text-center">Daftar Agenda Sekolah</h3><br>
                     <div>
                         <table class="table table-striped" id="myTable">
                             <thead>
                             <tr>
                                 <th>Nama Agenda</th>
                                 <th>Tanggal Agenda</th>
-                                <th>Isi Agenda</th>
+                                <th>Foto</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>
@@ -71,28 +71,14 @@
         </div>
     </section>
 @endsection
+
 @push('js')
-    <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+<script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#tgl_agenda').datepicker({
-                uiLibrary: 'bootstrap4',
-                format: 'yyyy-mm-dd'
-            });
-            $('.summernote').summernote({
-                toolbar: [
-                    // [groupName, [list of button]]
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']],
-                    ['link', ['link']]
-                ]
-            });
+           
             var table = $('#myTable').DataTable({
                 processing: true,
                 serverSide: true,
@@ -104,8 +90,8 @@
                     data: 'tgl_agenda',
                     name: 'tgl_agenda'
                 }, {
-                    data: 'isi',
-                    name: 'isi'
+                    data: 'foto',
+                    name: 'foto'
                 },
                     {
                         data: 'action',
@@ -154,7 +140,22 @@
             $('body').on('click', '.hapus-data', function () {
                 del($(this).attr('data-id'));
             });
-
+            $('#tgl_agenda').datepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'yyyy-mm-dd'
+            });
+            $('.summernote').summernote({
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['link', ['link']]
+                ]
+            });
         });
     </script>
 @endpush

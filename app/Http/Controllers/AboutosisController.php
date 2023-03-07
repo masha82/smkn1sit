@@ -15,10 +15,11 @@ class AboutosisController extends Controller
      * @return \Illuminate\Http\Response
      */
     use Table;
+
     protected $model = Aboutosis::class;
+
     public function index()
     {
-        $aboutsch = Aboutosis::orderBy('created_at', 'DESC')->first();
         return view('osis');
     }
 
@@ -91,15 +92,15 @@ class AboutosisController extends Controller
     public function anyData(Request $request)
     {
         return DataTables::of($this->model::query())
-            ->addColumn('file', function ($data) {
-                $del = '<img src="' . asset('foto_osis/' . $data->file) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+            ->addColumn('foto', function ($data) {
+                $del = '<img src="' . asset('foto_osis/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
                 return  $del;
             })
             ->addColumn('action', function ($data) {
                 $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
                 return  $del;
             })
-            ->rawColumns(['file', 'action'])
+            ->rawColumns(['foto', 'action'])
             ->make(true);
     }
 }

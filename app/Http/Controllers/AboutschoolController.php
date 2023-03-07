@@ -15,10 +15,11 @@ class AboutschoolController extends Controller
      * @return \Illuminate\Http\Response
      */
     use Table;
+
     protected $model = Aboutsch::class;
+
     public function index()
     {
-        $aboutsch = Aboutsch::orderBy('created_at', 'DESC')->first();
         return view('school');
     }
 
@@ -92,15 +93,15 @@ class AboutschoolController extends Controller
     public function anyData(Request $request)
     {
         return DataTables::of($this->model::query())
-            ->addColumn('file', function ($data) {
-                $del = '<img src="' . asset('gambar_about/' . $data->file) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
-                return  $del;
+            ->addColumn('foto', function ($data) {
+                $foto = '<img src="' . asset('gambar_about/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+                return $foto;
             })
             ->addColumn('action', function ($data) {
                 $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
-                return  $del;
+                return $del;
             })
-            ->rawColumns(['file', 'action'])
+            ->rawColumns(['foto', 'action'])
             ->make(true);
     }
 }

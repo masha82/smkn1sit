@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +14,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
- });
+Route::get('/', [\App\Http\Controllers\LandingController::class, 'index']);
 
 Route::get('/tentang', function () {
     return view('tentangsekolah');
@@ -28,14 +26,16 @@ Route::get('/osis', function () {
     return view('tentangosis');
 });
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+]);
 
 //tabel
 Route::get('/berita/data', [App\Http\Controllers\BeritaController::class, 'anyData'])->name('berita.data');
 Route::get('/gallery/data', [App\Http\Controllers\GaleriController::class, 'anyData'])->name('gallery.data');
 Route::get('/video/data', [App\Http\Controllers\VideoController::class, 'anyData'])->name('video.data');
 Route::get('/tentangsekolah/data', [App\Http\Controllers\AboutschoolController::class, 'anyData'])->name('tentangsekolah.data');
-Route::get('/visidanmisi/data', [App\Http\Controllers\VisionController::class, 'anyData'])->name('visidanmisi.data');
+//Route::get('/visidanmisi/data', [App\Http\Controllers\VisionController::class, 'anyData'])->name('visidanmisi.data');
 Route::get('/pejabat/data', [App\Http\Controllers\PejabatController::class, 'anyData'])->name('pejabat.data');
 Route::get('/jurusan/data', [App\Http\Controllers\KeahlianController::class, 'anyData'])->name('jurusan.data');
 Route::get('/kompetensi/data', [App\Http\Controllers\PostingkompetensiController::class, 'anyData'])->name('kompetensi.data');

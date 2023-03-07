@@ -61,10 +61,10 @@
                     <!-- Logo
                     ============================================= -->
                     <div id="logo" class="me-lg-0 col-lg-3">
-                        <a href="index.html" class="standard-logo"><img src="demos/kindergarten/images/logo.svg"
-                                                                        alt="Canvas Logo" width="140"></a>
-                        <a href="index.html" class="retina-logo"><img src="demos/kindergarten/images/logo.svg"
-                                                                      alt="Canvas Logo" width="140"></a>
+                        <a href="index.html" class="standard-logo"><img src="{{asset('logosmkn.png')}}"
+                                                                        style="height: 50px!important;"></a>
+                        <a href="index.html" class="retina-logo"><img src="{{asset('logosmkn.png')}}"
+                                                                      style="height: 50px!important; "></a>
                     </div><!-- #logo end -->
 
 
@@ -80,353 +80,354 @@
                     <nav class="primary-menu">
 
                         <ul class="menu-container">
-                            <li class="menu-item"><a class="menu-link" href="{{ url('/') }}">
-                                    <div>BERANDA</div>
-                                </a>
-                                <ul class="sub-menu-container" style="">
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('berita') }}">
-                                            <div>BERITA</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('gallery') }}">
-                                            <div>GALERI</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('video') }}">
-                                            <div>VIDEO</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item"><a class="menu-link" href="#">
-                                    <div>PROFIL</div>
-                                </a>
-                                <ul class="sub-menu-container" style="">
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('tentangsekolah') }}">
-                                            <div>TENTANG SEKOLAH</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('visidanmisi') }}">
-                                            <div>VISI DAN MISI</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('pejabat') }}">
-                                            <div>KEPALA SEKOLAH</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('pejabat') }}">
-                                            <div>WAKIL KEPALA SEKOLAH</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('kompetensi') }}">
-                                            <div>KOMPETENSI KEAHLIAN</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('achievement') }}">
-                                            <div>PRESTASI SEKOLAH</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                            @guest
+                                <li class="menu-item"><a class="menu-link" href="{{ url('/') }}">
+                                        <div>BERANDA</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('berita') }}">
+                                                <div>BERITA</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('gallery') }}">
+                                                <div>GALERI</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('video') }}">
+                                                <div>VIDEO</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                        <div>PROFIL</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('tentangsekolah') }}">
+                                                <div>TENTANG SEKOLAH</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('visidanmisi') }}">
+                                                <div>VISI DAN MISI</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('pejabat') }}">
+                                                <div>KEPALA SEKOLAH</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('pejabat') }}">
+                                                <div>WAKIL KEPALA SEKOLAH</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('kompetensi') }}">
+                                                <div>KOMPETENSI KEAHLIAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('achievement') }}">
+                                                <div>PRESTASI SEKOLAH</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
 
-                            <li class="menu-item"><a class="menu-link" href="#">
-                                    <div>DATA</div>
-                                </a>
-                                <ul class="sub-menu-container" style="">
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('sarana') }}">
-                                            <div>SARPRAS</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('gurusekolah') }}">
-                                            <div>GURU</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('tenagapendidik') }}">
-                                            <div>TENAGA PENDIDIK</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('siswasekolah') }}">
-                                            <div>SISWA</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item"><a class="menu-link" href="#">
-                                    <div>INFORMASI</div>
-                                </a>
-                                <ul class="sub-menu-container" style="">
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('infosekolah') }}">
-                                            <div>PENGUMUMAN</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('agendasekolah') }}">
-                                            <div>AGENDA KEGIATAN</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('jadwalmapel') }}">
-                                            <div>JADWAL PELAJARAN</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('jadwalujian') }}">
-                                            <div>JADWAL UJIAN</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('ekskul') }}">
-                                            <div>EKSTRAKURIKULER</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item"><a class="menu-link" href="#">
-                                    <div>OSIS</div>
-                                </a>
-                                <ul class="sub-menu-container" style="">
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('tentangosis') }}">
-                                            <div>TENTANG OSIS</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('pengurus') }}">
-                                            <div>PENGURUS OSIS</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('kegosis') }}">
-                                            <div>TENTANG KEGIATAN</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item"><a class="menu-link" href="#">
-                                    <div>APLIKASI SEKOLAH</div>
-                                </a>
-                                <ul class="sub-menu-container" style="">
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('appschool') }}">
-                                            <div>DAPODIK</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('appschool') }}">
-                                            <div>E-RAPOR</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item"><a class="menu-link" href="#">
-                                    <div>PPDB</div>
-                                </a>
-                                <ul class="sub-menu-container" style="">
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('ppdb') }}">
-                                            <div>JALUR ONLINE</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('ppdb') }}">
-                                            <div>JALUR OFFLINE</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item"><a class="menu-link" href="{{ route('pendapat.create') }}">
-                                    <div>OPINI</div>
-                                </a>
-                                {{-- <ul class="sub-menu-container" style="">
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('pendapat') }}">
-                                            <div>OPINI GURU</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ url('pendapat') }}">
-                                            <div>OPINI SISWA</div>
-                                        </a>
-                                    </li>
-                                </ul> --}}
-                            </li>
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                        <div>DATA</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('sarana') }}">
+                                                <div>SARPRAS</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('gurusekolah') }}">
+                                                <div>GURU</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('tenagapendidik') }}">
+                                                <div>TENAGA PENDIDIK</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('siswasekolah') }}">
+                                                <div>SISWA</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                        <div>INFORMASI</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('infosekolah') }}">
+                                                <div>PENGUMUMAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('agendasekolah') }}">
+                                                <div>AGENDA KEGIATAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('jadwalmapel') }}">
+                                                <div>JADWAL PELAJARAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('jadwalujian') }}">
+                                                <div>JADWAL UJIAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('ekskul') }}">
+                                                <div>EKSTRAKURIKULER</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                        <div>OSIS</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('tentangosis') }}">
+                                                <div>TENTANG OSIS</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('pengurus') }}">
+                                                <div>PENGURUS OSIS</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('kegosis') }}">
+                                                <div>TENTANG KEGIATAN</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                        <div>APLIKASI SEKOLAH</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('appschool') }}">
+                                                <div>DAPODIK</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('appschool') }}">
+                                                <div>E-RAPOR</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                        <div>PPDB</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('ppdb') }}">
+                                                <div>JALUR ONLINE</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('ppdb') }}">
+                                                <div>JALUR OFFLINE</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a class="menu-link" href="{{ route('pendapat.create') }}">
+                                        <div>OPINI</div>
+                                    </a>
+                                    {{-- <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('pendapat') }}">
+                                                <div>OPINI GURU</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ url('pendapat') }}">
+                                                <div>OPINI SISWA</div>
+                                            </a>
+                                        </li>
+                                    </ul> --}}
+                                </li>
+                            @endguest
                             @auth
-                                
-                            <li class="menu-item"><a class="menu-link" href="#">
-                                <div>BERANDA</div>
-                            </a>
-                            <ul class="sub-menu-container" style="">
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                        <div>BERANDA</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('berita.create') }}">
+                                                <div>FORM BERITA</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('gallery.create') }}">
+                                                <div>FORM GALERI</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('video.create') }}">
+                                                <div>FORM VIDEO</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                        <div>PROFIL</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('tentangsekolah.create') }}">
+                                                <div>FORM TENTANG SEKOLAH</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('visidanmisi.create') }}">
+                                                <div>FORM VISI & MISI SEKOLAH</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('pejabat.create') }}">
+                                                <div>FORM PEJABAT SEKOLAH</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('jurusan.create') }}">
+                                                <div>FORM KEAHLIAN/JURUSAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('kompetensi.create') }}">
+                                                <div>FORM KOMPETENSI KEAHLIAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('achievement.create') }}">
+                                                <div>FORM PRESTASI SEKOLAH</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                        <div>DATA</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('sarana.create') }}">
+                                                <div>FORM DATA SARPRAS</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('matapelajaran.create') }}">
+                                                <div>FORM DATA MATA PELAJARAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('gurusekolah.create') }}">
+                                                <div>FORM DATA GURU</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('bidangpendidik.create') }}">
+                                                <div>FORM DATA BIDANG PENDIDIK</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('tenagapendidik.create') }}">
+                                                <div>FORM DATA TENAGA PENDIDIK</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('siswasekolah.create') }}">
+                                                <div>FORM DATA SISWA</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                        <div>INFORMASI</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('infosekolah.create') }}">
+                                                <div>FORM PENGUMUMAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('agendasekolah.create') }}">
+                                                <div>FORM AGENDA KEGIATAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('jadwalmapel.create') }}">
+                                                <div>FORM JADWAL PELAJARAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('jadwalexam.create') }}">
+                                                <div>FORM JADWAL UJIAN</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('ekskul.create') }}">
+                                                <div>FORM EKSTRAKURIKULER</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                </li>
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                        <div>OSIS</div>
+                                    </a>
+                                    <ul class="sub-menu-container" style="">
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('tentangosis.create') }}">
+                                                <div>FORM TENTANG OSIS</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('pengurus.create') }}">
+                                                <div>FORM PENGURUS OSIS</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item" style="">
+                                            <a class="menu-link" href="{{ route('kegosis.create') }}">
+                                                <div>FORM TENTANG KEGIATAN OSIS</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="menu-item" style="">
-                                    <a class="menu-link" href="{{ route('berita.create') }}">
-                                        <div>FORM BERITA</div>
+                                    <a class="menu-link" href="{{ route('appschool.create') }}">
+                                        <div>FORM APLIKASI</div>
                                     </a>
                                 </li>
                                 <li class="menu-item" style="">
-                                    <a class="menu-link" href="{{ route('gallery.create') }}">
-                                        <div>FORM GALERI</div>
+                                    <a class="menu-link" href="{{ route('infoppdb.create') }}">
+                                        <div>FORM PPDB</div>
                                     </a>
                                 </li>
                                 <li class="menu-item" style="">
-                                    <a class="menu-link" href="{{ route('video.create') }}">
-                                        <div>FORM VIDEO</div>
+                                    <a class="menu-link" href="{{ route('pendapat.create') }}">
+                                        <div>FORM OPINI</div>
                                     </a>
                                 </li>
-                            </ul>
-                            </li>
-                            <li class="menu-item"><a class="menu-link" href="#">
-                                <div>PROFIL</div>
-                            </a>
-                            <ul class="sub-menu-container" style="">
-                                <li class="menu-item" style="">
-                                    <a class="menu-link" href="{{ route('tentangsekolah.create') }}">
-                                        <div>FORM TENTANG SEKOLAH</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item" style="">
-                                    <a class="menu-link" href="{{ route('visidanmisi.create') }}">
-                                        <div>FORM VISI & MISI SEKOLAH</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item" style="">
-                                    <a class="menu-link" href="{{ route('pejabat.create') }}">
-                                        <div>FORM PEJABAT SEKOLAH</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item" style="">
-                                    <a class="menu-link" href="{{ route('jurusan.create') }}">
-                                        <div>FORM KEAHLIAN/JURUSAN</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item" style="">
-                                    <a class="menu-link" href="{{ route('kompetensi.create') }}">
-                                        <div>FORM KOMPETENSI KEAHLIAN</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item" style="">
-                                    <a class="menu-link" href="{{ route('achievement.create') }}">
-                                        <div>FORM PRESTASI SEKOLAH</div>
-                                    </a>
-                                </li>
-                            </ul>
-                            </li>
-                            <li class="menu-item"><a class="menu-link" href="#">
-                                <div>DATA</div>
-                            </a>
-                            <ul class="sub-menu-container" style="">
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('sarana.create') }}">
-                                            <div>FORM DATA SARPRAS</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('matapelajaran.create') }}">
-                                            <div>FORM DATA MATA PELAJARAN</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('gurusekolah.create') }}">
-                                            <div>FORM DATA GURU</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('bidangpendidik.create') }}">
-                                            <div>FORM DATA BIDANG PENDIDIK</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('tenagapendidik.create') }}">
-                                            <div>FORM DATA TENAGA PENDIDIK</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('siswasekolah.create') }}">
-                                            <div>FORM DATA SISWA</div>
-                                        </a>
-                                    </li>
-                            </ul>
-                            </li>
-                            <li class="menu-item"><a class="menu-link" href="#">
-                                <div>INFORMASI</div>
-                            </a>
-                                <ul class="sub-menu-container" style="">
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('infosekolah.create') }}">
-                                            <div>FORM PENGUMUMAN</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('agendasekolah.create') }}">
-                                            <div>FORM AGENDA KEGIATAN</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('jadwalmapel.create') }}">
-                                            <div>FORM JADWAL PELAJARAN</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('jadwalexam.create') }}">
-                                            <div>FORM JADWAL UJIAN</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('ekskul.create') }}">
-                                            <div>FORM EKSTRAKURIKULER</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                                </li>
-                            </li>
-                            <li class="menu-item"><a class="menu-link" href="#">
-                                    <div>OSIS</div>
-                                </a>
-                                <ul class="sub-menu-container" style="">
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('tentangosis.create') }}">
-                                            <div>FORM TENTANG OSIS</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('pengurus.create') }}">
-                                            <div>FORM PENGURUS OSIS</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" style="">
-                                        <a class="menu-link" href="{{ route('kegosis.create') }}">
-                                            <div>FORM TENTANG KEGIATAN OSIS</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item" style="">
-                                <a class="menu-link" href="{{ route('appschool.create') }}">
-                                    <div>FORM APLIKASI SEKOLAH</div>
-                                </a>
-                            </li>
-                            <li class="menu-item" style="">
-                                <a class="menu-link" href="{{ route('infoppdb.create') }}">
-                                    <div>FORM PPDB</div>
-                                </a>
-                            </li>
-                            <li class="menu-item" style="">
-                                <a class="menu-link" href="{{ route('pendapat.create') }}">
-                                    <div>FORM OPINI</div>
-                                </a>
-                            </li>
                             @endauth
                         </ul>
 

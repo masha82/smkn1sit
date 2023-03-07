@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ekstrakurikuler;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class EkstrakurikulerController extends Controller
 {
@@ -87,5 +88,14 @@ class EkstrakurikulerController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function anyData(Request $request)
+    {
+        return DataTables::of(Ekstrakurikuler::query())
+            ->addColumn('action', function ($data) {
+                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
+                return  $del;
+            })
+            ->make(true);
     }
 }

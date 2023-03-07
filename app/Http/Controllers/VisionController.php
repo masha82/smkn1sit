@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Visi;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class VisionController extends Controller
 {
@@ -14,6 +15,7 @@ class VisionController extends Controller
      */
     public function index()
     {
+
         return view('visimisi');
     }
 
@@ -24,7 +26,8 @@ class VisionController extends Controller
      */
     public function create()
     {
-        return view('formvisimisi');
+        $visi = Visi::orderBy('created_at','DESC')->first();
+        return view('formvisimisi', compact('visi'));
     }
 
     /**

@@ -7,7 +7,7 @@
     <title>Form Tentang Sekolah</title>
 @endsection
 @section('content')
-    <section id="page-title">    
+    <section id="page-title">
         <div class="container clearfix">
             <h1>Form Tentang Sekolah</h1>
         </div>
