@@ -13,5 +13,5 @@ class Siswa extends Model
      *
      * @var array
      */
-    protected $fillable = ['thn_ajaran', 'id_keahlian', 'kelas', 'jurusan', 'jumlah', 'link'];
+    protected $fillable = ['thn_ajaran', 'kelas', 'jurusan', 'jumlah', 'link'];
 }

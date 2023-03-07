@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @push('css')
-        <link rel="stylesheet" href="{{ url('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css') }}">
-        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
 @endpush
 @section('title')
     <title>Form Kompetensi Keahlian</title>
@@ -9,7 +9,7 @@
 @section('content')
     <section id="page-title">    
         <div class="container clearfix">
-            <h1>Form Kompetensi Keahlian</h1>
+            <h1>Form Kompetensi Keahlian/Jurusan</h1>
         </div>
     </section>
     <section id="content">
@@ -22,7 +22,7 @@
                         </div>
                     @endif
                     <div class="col-lg-6">
-                        <form class="row" action="{{ route('kompetensi.store') }}" method="post"
+                        <form class="row" action="{{ route('jurusan.store') }}" method="post"
                               enctype="multipart/form-data">
                             @csrf
                             @method('POST')
@@ -68,27 +68,15 @@
     </section>
 @endsection
 @push('js')
-    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
-    <script>
+        <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+        <script>
         $(document).ready(function () {
-            $('.summernote').summernote({
-                toolbar: [
-                    // [groupName, [list of button]]
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']],
-                    ['link', ['link']]
-                ]
-            });
             var table = $('#myTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('kompetensi.data') }}",
+                ajax: "{{ route('jurusan.data') }}",
                 columns: [{
                     data: 'nama_keahlian',
                     name: 'nama_keahlian'
@@ -121,7 +109,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "{{ route('kompetensi.index') }}/" + id,
+                            url: "{{ route('jurusan.index') }}/" + id,
                             method: "DELETE",
                             success: function (response) {
                                 table.ajax.reload();
@@ -144,6 +132,18 @@
             };
             $('body').on('click', '.hapus-data', function () {
                 del($(this).attr('data-id'));
+            });
+            $('.summernote').summernote({
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['link', ['link']]
+                ]
             });
         });
     </script>

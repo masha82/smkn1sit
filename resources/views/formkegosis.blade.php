@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @push('css')
-    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{ url('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
 @endpush
 @section('title')
     <title>Form Kegiatan OSIS</title>
@@ -57,7 +58,6 @@
                             <tr>
                                 <th>Judul Kegiatan</th>
                                 <th>Tanggal</th>
-                                <th>Isi</th>
                                 <th>Foto</th>
                                 <th>Aksi</th>
                             </tr>
@@ -73,41 +73,25 @@
     </section>
 @endsection
 @push('js')
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
     <script>
         $(document).ready(function () {
-            $('#tgl_keg').datepicker({
-                uiLibrary: 'bootstrap4',
-                format: 'yyyy-mm-dd'
-            });
-            $('.summernote').summernote({
-                toolbar: [
-                    // [groupName, [list of button]]
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']],
-                    ['link', ['link']]
-                ]
-            });
+            
             var table = $('#myTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('pengurus.data') }}",
+                ajax: "{{ route('kegosis.data') }}",
                 columns: [{
                     data: 'judul',
                     name: 'judul'
-                }, {
+                     }, 
+                     {
                     data: 'tgl_keg',
                     name: 'tgl_keg'
-                },
-                    {
-                        data: 'isi',
-                        name: 'isi'
                     },
                     {
                         data: 'foto',
@@ -136,7 +120,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "{{ route('pengurus.index') }}/" + id,
+                            url: "{{ route('kegosis.index') }}/" + id,
                             method: "DELETE",
                             success: function (response) {
                                 table.ajax.reload();
@@ -160,7 +144,22 @@
             $('body').on('click', '.hapus-data', function () {
                 del($(this).attr('data-id'));
             });
-
+            $('#tgl_keg').datepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'yyyy-mm-dd'
+            });
+            $('.summernote').summernote({
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['link', ['link']]
+                ]
+            });
         });
     </script>
 @endpush

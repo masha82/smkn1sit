@@ -20,7 +20,8 @@ class VideoController extends Controller
 
     public function index()
     {
-        return view('video');
+        $videos = Video::orderBy('created_at','DESC')->paginate(10);
+        return view('video', compact('videos'));
     }
 
     /**

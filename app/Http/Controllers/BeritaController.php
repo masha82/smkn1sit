@@ -20,7 +20,8 @@ class BeritaController extends Controller
     
     public function index()
     {
-        return view('berita');
+        $data = Berita::orderBy('created_at', 'DESC')->paginate(20);
+        return view('berita', compact('data'));
     }
 
     /**
@@ -58,7 +59,9 @@ class BeritaController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Berita::findOrFail($id);
+        $berita = Berita::orderBy('created_at', 'DESC')->take(5);
+        return view('shownews', compact('data', 'berita'));
     }
 
     /**

@@ -20,7 +20,8 @@ class KepsekController extends Controller
 
      public function index()
     {
-        return view('kepalasekolah');
+        $kepala = Kepsek::orderBy('created_at','DESC')->first();
+        return view('kepalasekolah', compact('kepala'));
     }
 
     /**

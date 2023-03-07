@@ -48,12 +48,7 @@
                             </div>
                             <div class="col-12 form-group">
                                 <label for="sel1">Nama Keahlian/Jurusan:</label>
-                                <select class="form-control" name="id_keahlian" id="id_keahlian">
-                                    <option><label>-- Pilih Salah Satu --</label></option>
-                                    @foreach($keahlian as $item)
-                                        <option value="{{$item->id}}">{{$item->nama_keahlian}}</option>
-                                    @endforeach
-                                </select>
+                                <<input type="text" name="jurusan" id="Jurusan" class="form-control">
                             </div>
                             <div class="col-12 form-group">
                                 <label>Jumlah Siswa:</label>
@@ -113,8 +108,8 @@
                         name: 'kelas'
                     },
                     {
-                        data: 'id_keahlian',
-                        name: 'id_keahlian'
+                        data: 'jurusan',
+                        name: 'jurusan'
                     },
                     {
                         data: 'jumlah',

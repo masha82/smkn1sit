@@ -32,7 +32,7 @@
                             </div>
                             <div class="col-12 form-group">
                                 <label>NIP Guru:</label>
-                                <input type="number" name="nip" id="nip" class="form-control">
+                                <input type="text" name="nip" id="nip" class="form-control">
                             </div>
                             <div class="col-12 form-group">
                                 <label for="sel1">Mata Pelajaran yang diampu:</label>
@@ -88,10 +88,6 @@
                 serverSide: true,
                 ajax: "{{ route('gurusekolah.data') }}",
                 columns: [{
-                    data: 'thn_ajaran',
-                    name: 'thn_ajaran'
-                },
-                    {
                         data: 'nama_guru',
                         name: 'nama_guru'
                     },
@@ -100,8 +96,8 @@
                         name: 'nip'
                     },
                     {
-                        data: 'id_mapel',
-                        name: 'id_mapel'
+                        data: 'mapel.nama_mapel',
+                        name: 'mapel.nama_mapel'
                     },
                     {
                         data: 'foto',

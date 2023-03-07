@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ppdb;
+use App\Traits\Table;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class PpdbController extends Controller
 {
@@ -12,6 +14,10 @@ class PpdbController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use Table;
+
+    protected $model = Ppdb::class;
+
     public function index()
     {
         return view('ppdb');
@@ -79,8 +85,14 @@ class PpdbController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function anyData(Request $request)
     {
-        //
+        return DataTables::of($this->model::query())
+            ->addColumn('action', function ($data) {
+                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
+                return $del;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
 }

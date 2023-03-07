@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kegiatanosis;
+use App\Traits\Table;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class KegiatanosisController extends Controller
 {
@@ -12,9 +14,15 @@ class KegiatanosisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use Table;
+
+    protected $model = Kegiatanosis::class;
+
+
     public function index()
     {
-        return view('kegiatanosis');
+        // $kegosis = Kegiatanosis::orderBy('created_at', 'DESC')->first();
+        return view('kegiatanosis', compact('kegosis'));
     }
 
     /**
@@ -84,8 +92,18 @@ class KegiatanosisController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function anyData(Request $request)
     {
-        //
+        return DataTables::of($this->model::query())
+            ->addColumn('foto', function ($data) {
+                $foto = '<img src="' . asset('foto_kegosis/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+                return $foto;
+            })
+            ->addColumn('action', function ($data) {
+                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
+                return $del;
+            })
+            ->rawColumns(['foto', 'action'])
+            ->make(true);
     }
 }

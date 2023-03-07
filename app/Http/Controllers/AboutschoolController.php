@@ -20,7 +20,8 @@ class AboutschoolController extends Controller
 
     public function index()
     {
-        return view('school');
+        $about = Aboutsch::orderBy('created_at', 'DESC')->first();
+        return view('school', compact('about'));
     }
 
     /**

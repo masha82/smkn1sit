@@ -42,7 +42,7 @@
 
                 </div>
                 <div class="row">
-                    <h6 class="text-center">Daftar Galeri</h6>
+                    <h6 class="text-center">Daftar Prestasi SMKN 1 Situbondo</h6>
                     <div>
                         <table class="table table-striped" id="myTable">
                             <thead>

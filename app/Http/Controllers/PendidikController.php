@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bidang;
 use App\Models\Pendidik;
+use App\Traits\Table;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class PendidikController extends Controller
 {
@@ -13,6 +15,10 @@ class PendidikController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use Table;
+
+    protected $model = Pendidik::class;
+
     public function index()
     {
         return view('pendidik');
@@ -25,8 +31,7 @@ class PendidikController extends Controller
      */
     public function create()
     {
-        $bidang = Bidang::all();
-        return view('formpendidik', compact('bidang'));
+        return view('formpendidik');
     }
 
     /**
@@ -52,10 +57,18 @@ class PendidikController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id, Request $request)
+    // {
+    //     $pendidik = Bidang::findOrfail($id);
+    //     if ($request->ajax()) {
+    //         return DataTables::of(Bidang::where('id_bidang', $id))
+    //             ->addColumn('nama_pendidik', function ($data) {
+    //                 return Carbon::parse($data->nama_pendidik);
+    //             })
+    //             ->make(true);
+    //     }
+    //     return view('pendidik', compact('pendidik'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -86,8 +99,18 @@ class PendidikController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function anyData(Request $request)
     {
-        //
+        return DataTables::of($this->model::query())
+            ->addColumn('foto', function ($data) {
+                $foto = '<img src="' . asset('foto_pendidik/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+                return $foto;
+            })
+            ->addColumn('action', function ($data) {
+                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
+                return $del;
+            })
+            ->rawColumns(['foto', 'action'])
+            ->make(true);
     }
 }

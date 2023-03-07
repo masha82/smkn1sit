@@ -38,7 +38,7 @@ Route::get('/tentangsekolah/data', [App\Http\Controllers\AboutschoolController::
 //Route::get('/visidanmisi/data', [App\Http\Controllers\VisionController::class, 'anyData'])->name('visidanmisi.data');
 Route::get('/kepala/data', [App\Http\Controllers\KepsekController::class, 'anyData'])->name('kepala.data');
 Route::get('/pejabat/data', [App\Http\Controllers\PejabatController::class, 'anyData'])->name('pejabat.data');
-Route::get('/jurusan/data', [App\Http\Controllers\PostingkompetensiController::class, 'anyData'])->name('jurusan.data');
+Route::get('/jurusan/data', [App\Http\Controllers\PostKompController::class, 'anyData'])->name('jurusan.data');
 Route::get('/achievement/data', [App\Http\Controllers\PrestasiController::class, 'anyData'])->name('achievement.data');
 Route::get('/sarana/data', [App\Http\Controllers\SarprasController::class, 'anyData'])->name('sarana.data');
 Route::get('/gurusekolah/data', [App\Http\Controllers\GuruController::class, 'anyData'])->name('gurusekolah.data');
@@ -68,7 +68,7 @@ Route::resource('tentangsekolah', \App\Http\Controllers\AboutschoolController::c
 Route::resource('visidanmisi', \App\Http\Controllers\VisionController::class);
 Route::resource('kepala', \App\Http\Controllers\KepsekController::class);
 Route::resource('pejabat', \App\Http\Controllers\PejabatController::class);
-Route::resource('kompetensi', \App\Http\Controllers\PostKompController::class);
+Route::resource('jurusan', \App\Http\Controllers\PostKompController::class);
 Route::resource('achievement', \App\Http\Controllers\PrestasiController::class);
 Route::resource('sarana', \App\Http\Controllers\SarprasController::class);
 Route::resource('matapelajaran', \App\Http\Controllers\MapelController::class);

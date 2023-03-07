@@ -16,7 +16,7 @@
                 <div class="heading-block fancy-title border-bottom-0 title-bottom-border">
                     <h1>Visi Sekolah</h1>
                 </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, nam expedita, ea fuga commodi voluptas iusto, hic autem deleniti dolores explicabo labore enim repellat earum perspiciatis.</p>
+                    <h3><p>{!! $visischool->visi !!}</p></h3>
             </div>
         </div>
     </div>
@@ -27,8 +27,8 @@
                 <div class="heading-block fancy-title border-bottom-0 title-bottom-border">
                     <h1>Misi Sekolah</h1>
                 </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, nam expedita, ea fuga commodi voluptas iusto, hic autem deleniti dolores explicabo labore enim repellat earum perspiciatis.</p>
-            </div>
+                    <h3><p>{!! $visischool->misi !!}</p></h3>
+                </div>
         </div>
     </div>
 @endsection

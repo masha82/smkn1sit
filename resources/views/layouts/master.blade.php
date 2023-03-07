@@ -313,7 +313,7 @@
                                             </a>
                                         </li>
                                         <li class="menu-item" style="">
-                                            <a class="menu-link" href="{{ route('kompetensi.create') }}">
+                                            <a class="menu-link" href="{{ route('jurusan.create') }}">
                                                 <div>FORM KOMPETENSI KEAHLIAN</div>
                                             </a>
                                         </li>
@@ -343,11 +343,11 @@
                                                 <div>FORM DATA GURU</div>
                                             </a>
                                         </li>
-                                        <li class="menu-item" style="">
+                                        {{-- <li class="menu-item" style="">
                                             <a class="menu-link" href="{{ route('bidangpendidik.create') }}">
-                                                <div>FORM DATA BIDANG PENDIDIK</div>
+                                                <div>FORM BIDANG PENDIDIK</div>
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         <li class="menu-item" style="">
                                             <a class="menu-link" href="{{ route('tenagapendidik.create') }}">
                                                 <div>FORM DATA TENAGA PENDIDIK</div>
@@ -423,11 +423,23 @@
                                         <div>FORM PPDB</div>
                                     </a>
                                 </li>
-                                <li class="menu-item" style="">
-                                    <a class="menu-link" href="{{ route('pendapat.create') }}">
-                                        <div>FORM OPINI</div>
-                                    </a>
+                                <li class="menu-item"><a class="menu-link" href="#">
+                                    <div>FORM OPINI</div>
+                                </a>
+                                <ul class="sub-menu-container" style="">
+                                    <li class="menu-item" style="">
+                                        <a class="menu-link" href="{{ route('pendapat.create') }}">
+                                            <div>TAMBAH OPINI</div>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item" style="">
+                                        <a class="menu-link" href="{{ url('pendapat') }}">
+                                            <div>LIHAT OPINI</div>
+                                        </a>
+                                    </li>
+                                </ul>
                                 </li>
+                            
                             @endauth
                         </ul>
 

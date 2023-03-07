@@ -36,13 +36,7 @@
                             </div>
                             <div class="col-12 form-group">
                                 <label for="sel1">Bidang:</label>
-                                <select class="form-control" name="id_bidang" id="id_bidang">
-                                    <option>-- Pilih Salah Satu --</option>
-                                    @foreach($bidang as $item)
-                                        <option value="{{$item->id}}">{{$item->nama_bidang}}</option>
-                                    @endforeach
-
-                                </select>
+                                <input type="text" name="bidang" id="bidang" class="form-control">
                             </div>
                             <div class="col-12 form-group">
                                 <label class="form-label" for="customFile">Upload Foto:</label>
@@ -97,8 +91,8 @@
                         name: 'nip'
                     },
                     {
-                        data: 'id_bidang',
-                        name: 'id_bidang'
+                        data: 'bidang',
+                        name: 'bidang'
                     },
                     {
                         data: 'foto',

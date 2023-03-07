@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ekstrakurikuler;
+use App\Traits\Table;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -13,6 +14,10 @@ class EkstrakurikulerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use Table;
+
+    protected $model = Ekstrakurikuler::class;
+
     public function index()
     {
         return view('ekskul');
@@ -92,10 +97,15 @@ class EkstrakurikulerController extends Controller
     public function anyData(Request $request)
     {
         return DataTables::of(Ekstrakurikuler::query())
+            ->addColumn('foto', function ($data) {
+                $foto = '<img src="' . asset('foto_ekskul/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+                return $foto;
+            })    
             ->addColumn('action', function ($data) {
-                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
-                return  $del;
-            })
+                    $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
+                    return  $del;
+                })
+            ->rawColumns(['foto', 'action'])
             ->make(true);
     }
 }

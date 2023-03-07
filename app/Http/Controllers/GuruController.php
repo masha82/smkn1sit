@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\Mapel;
+use App\Traits\Table;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+
 
 class GuruController extends Controller
 {
@@ -13,9 +17,15 @@ class GuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use Table;
+
+    protected $mapel = Mapel::class;
+    protected $model = Guru::class;
+
     public function index()
     {
-        return view('guru');
+        $guruschool = Guru::orderBy('created_at', 'DESC')->first();
+        return view('guru', compact('guruschool'));
     }
 
     /**
@@ -23,6 +33,7 @@ class GuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function create()
     {
         $mapel = Mapel::all();
@@ -52,9 +63,17 @@ class GuruController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        $guru = Mapel::findOrfail($id);
+        if ($request->ajax()) {
+            return DataTables::of(Mapel::where('id_mapel', $id))
+                ->addColumn('nama_guru', function ($data) {
+                    return Carbon::parse($data->nama_guru);
+                })
+                ->make(true);
+        }
+        return view('guru', compact('guru'));
     }
 
     /**
@@ -86,8 +105,18 @@ class GuruController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function anyData(Request $request)
     {
-        //
+        return DataTables::of($this->model::query())
+            ->addColumn('foto', function ($data) {
+                $foto = '<img src="' . asset('foto_guru/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+                return $foto;
+            })
+            ->addColumn('action', function ($data) {
+                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
+                return $del;
+            })
+            ->rawColumns(['foto', 'action'])
+            ->make(true);
     }
 }

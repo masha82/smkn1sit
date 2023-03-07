@@ -3,17 +3,16 @@
     <title>Galeri</title>
 @endsection
 @section('content')
-<section id="page-title">
+{{-- <section id="page-title">
     <div class="container clearfix">
         <h1>Galeri SMKN 1 Situbondo</h1>
     </div>
-</section>
+</section> --}}
 <div class="row">
     <div class="col-md-12">
         <div class="container topmargin bottommargin-lg">
             <div class="mx-auto" style="max-width: 700px">
-                <h2 class="mb-2 nott center ls0 gradient-text gradient-horizon">GALERI KEGIATAN KORPRI KABUPATEN
-                    SITUBONDO</h2>
+                <h2 class="mb-2 nott center ls0 gradient-text gradient-horizon">GALERI SMK NEGERI 1 Situbondo</h2>
             </div>
         </div>
     </div>

@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @push('css')
-    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{ url('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
 @endpush
 @section('title')
     <title>Form Opini Sekolah</title>
@@ -57,7 +58,7 @@
                     </div>
 
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <h6 class="text-center">Daftar Opini Siswa dan Guru</h6>
                     <div>
                         <table class="table table-striped" id="myTable">
@@ -76,12 +77,14 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
 @endsection
 @push('js')
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
@@ -106,7 +109,7 @@
             var table = $('#myTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('appschool.data') }}",
+                ajax: "{{ route('pendapat.data') }}",
                 columns: [{
                     data: 'judul',
                     name: 'judul'
@@ -147,7 +150,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "{{ route('appschool.index') }}/" + id,
+                            url: "{{ route('pendapat.index') }}/" + id,
                             method: "DELETE",
                             success: function (response) {
                                 table.ajax.reload();

@@ -20,7 +20,8 @@ class AboutosisController extends Controller
 
     public function index()
     {
-        return view('osis');
+        $abtosis = Aboutosis::orderBy('created_at', 'DESC')->first();
+        return view('osis',compact('abtosis'));
     }
 
     /**
