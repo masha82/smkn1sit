@@ -3,13 +3,40 @@
     <title>Video SMKN 1 Situbondo</title>
 @endsection
 @section('content')
-    <section id="page-title">
-        <div class="container clearfix">
-            <h1>Video SMKN 1 Situbondo</h1>
+    <section class="mb-4">
+        <div class="container clearfix mt-5 mb-4">
+            <div class="row clearfix">
+                <!-- Second Posts Area
+                ============================================= -->
+                <div class="col-lg-12 mb-4">
+                    <!-- Gallery Slider
+                    ============================================= -->
+                    <h4 style="background: #9ADCFF" class="ls1 text-uppercase fw-bold">
+                        Video</h4>
+                    <!-- Flex Thumbs Slider
+                    ============================================= -->
+                    <div class="row col-mb-50">
+                        @foreach($videos as $video)
+                            <div class="col-md-4 mt-0">
+                                <!-- Post Article -->
+                                <div class="posts-md">
+                                    <div class="entry">
+                                        <div class="entry-title title-sm nott">
+                                            <h3 class="mb-0"><a
+                                                    href="#">{{$video->keterangan}}</a>
+                                            </h3>
+                                        </div>
+                                        <div class="entry-image img-fit">
+                                            {!! $video->link !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        {{ $videos->links() }}
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    <video poster="images/videos/explore-poster.jpg" preload="auto" controls="" style="display: block; width: 100%;">
-        <source src="images/videos/explore.webm" type="video/webm">
-        <source src="images/videos/explore.mp4" type="video/mp4">
-    </video>
 @endsection

@@ -38,11 +38,10 @@
                                 <label for="sel1">Jabatan:</label>
                                 <select class="form-control" name="jabatan" id="jabatan">
                                     <option><label>-- Pilih Salah Satu --</label></option>
-                                    <option value="1">KEPALA SEKOLAH</option>
-                                    <option value="2">WAKA KURIKULUM</option>
-                                    <option value="3">WAKA KESISWAAN</option>
-                                    <option value="4">WAKA SARPRAS</option>
-                                    <option value="5">WAKA HUMAS</option>
+                                    <option value="1">WAKA KURIKULUM</option>
+                                    <option value="2">WAKA KESISWAAN</option>
+                                    <option value="3">WAKA SARPRAS</option>
+                                    <option value="4">WAKA HUMAS</option>
                                 </select>
                             </div>
                             <div class="col-12 form-group">

@@ -117,7 +117,7 @@
                                             </a>
                                         </li>
                                         <li class="menu-item" style="">
-                                            <a class="menu-link" href="{{ url('pejabat') }}">
+                                            <a class="menu-link" href="{{ url('kepala') }}">
                                                 <div>KEPALA SEKOLAH</div>
                                             </a>
                                         </li>
@@ -303,13 +303,13 @@
                                             </a>
                                         </li>
                                         <li class="menu-item" style="">
-                                            <a class="menu-link" href="{{ route('pejabat.create') }}">
-                                                <div>FORM PEJABAT SEKOLAH</div>
+                                            <a class="menu-link" href="{{ route('kepala.create') }}">
+                                                <div>FORM KEPALA SEKOLAH</div>
                                             </a>
                                         </li>
                                         <li class="menu-item" style="">
-                                            <a class="menu-link" href="{{ route('jurusan.create') }}">
-                                                <div>FORM KEAHLIAN/JURUSAN</div>
+                                            <a class="menu-link" href="{{ route('pejabat.create') }}">
+                                                <div>FORM PEJABAT SEKOLAH</div>
                                             </a>
                                         </li>
                                         <li class="menu-item" style="">

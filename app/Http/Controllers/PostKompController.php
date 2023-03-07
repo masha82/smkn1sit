@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Keahlian;
 use App\Models\Postkompetensi;
+use App\Traits\Table;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class PostKompController extends Controller
 {
@@ -13,11 +14,12 @@ class PostKompController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use Table;
+
+    protected $model = Postkompetensi::class;
     public function index()
     {
-        $kompetensi = Postkompetensi::with('keahlian')->get();
-        $keahlian = Keahlian::all();
-        return view('kompetensi', compact('keahlian', 'kompetensi'));
+        return view('kompetensi');
     }
 
     /**
@@ -27,8 +29,7 @@ class PostKompController extends Controller
      */
     public function create()
     {
-        $keahlian = Keahlian::all();
-        return view('formkompetensi', compact('keahlian'));
+        return view('formkompetensi');
     }
 
     /**
@@ -88,8 +89,19 @@ class PostKompController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function anyData(Request $request)
     {
-        //
+        return DataTables::of($this->model::query())
+            ->addColumn('foto', function ($data) {
+                $foto = '<img src="' . asset('foto_kompetensi/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+                return $foto;
+            })
+            ->addColumn('action', function ($data) {
+                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
+                return $del;
+            })
+            ->rawColumns(['foto', 'action'])
+            ->make(true);
     }
+
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Galeri;
+use App\Traits\Table;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 
 class GaleriController extends Controller
@@ -13,6 +15,9 @@ class GaleriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use Table;
+
+    protected $model = Galeri::class;
     public function index()
     {
         return view('galeri');
@@ -85,8 +90,18 @@ class GaleriController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function anyData(Request $request)
     {
-        //
+        return DataTables::of($this->model::query())
+            ->addColumn('foto', function ($data) {
+                $foto = '<img src="' . asset('galerifoto/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+                return $foto;
+            })
+            ->addColumn('action', function ($data) {
+                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
+                return $del;
+            })
+            ->rawColumns(['foto', 'action'])
+            ->make(true);
     }
 }

@@ -15,12 +15,10 @@ class AgendaController extends Controller
      * @return \Illuminate\Http\Response
      */
     use Table;
-
     protected $model = Agenda::class;
-    
     public function index()
     {
-        
+        // $agenda = Agenda::orderBy('created_at', 'DESC')->first();
         return view('agenda', compact('agenda'));
     }
 

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @push('css')
-    <link rel="stylesheet" href="{{ url('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
 @endpush
 @section('title')
     <title>Form Kompetensi Keahlian</title>
@@ -28,12 +28,7 @@
                             @method('POST')
                             <div class="col-12 form-group">
                                 <label for="sel1">Nama Keahlian/Jurusan:</label>
-                                <select class="form-control" name="id_keahlian" id="id_keahlian">
-                                    <option>-- Pilih Salah Satu --</option>
-                                    @foreach($keahlian as $item)
-                                        <option value="{{$item->id}}">{{$item->nama_keahlian}}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" name="nama_keahlian" id="nama_keahlian" class="form-control">
                             </div>
                             <div class="col-12 form-group">
                                 <label>Tentang Keahlian/Jurusan:</label>
@@ -51,7 +46,7 @@
 
                 </div>
                 <div class="row">
-                    <h6 class="text-center">Daftar Kompetensi Keahlian/Jurusan</h6>
+                    <h5 class="text-center">Daftar Kompetensi Keahlian/Jurusan</h5>
                     <div>
                         <table class="table table-striped" id="myTable">
                             <thead>
@@ -73,16 +68,9 @@
     </section>
 @endsection
 @push('js')
-    <script
-        src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}
-                                        "></script>
-    <script
-        src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}
-                                        "></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.summernote').summernote({
@@ -102,8 +90,8 @@
                 serverSide: true,
                 ajax: "{{ route('kompetensi.data') }}",
                 columns: [{
-                    data: 'id_keahlian',
-                    name: 'id_keahlian'
+                    data: 'nama_keahlian',
+                    name: 'nama_keahlian'
                 },
                     {
                         data: 'isi',

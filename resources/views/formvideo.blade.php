@@ -27,7 +27,7 @@
                             @csrf
                             @method('POST')
                             <div class="col-12 form-group">
-                                <label class="form-label" for="customFile">Link Video:</label>
+                                <label class="form-label" for="customFile">Link Video: (isikan embed video)</label>
                                 <input type="text" class="form-control" name="link" id="file"/>
                             </div>
 
@@ -74,8 +74,8 @@
                 serverSide: true,
                 ajax: "{{ route('video.data') }}",
                 columns: [{
-                    data: 'video',
-                    name: 'video'
+                    data: 'link',
+                    name: 'link'
                 },
                     {
                         data: 'keterangan',

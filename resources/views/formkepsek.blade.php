@@ -4,12 +4,12 @@
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
 @endpush
 @section('title')
-    <title>Form Tentang OSIS</title>
+    <title>Form Kepala Sekolah</title>
 @endsection
 @section('content')
     <section id="page-title">    
         <div class="container clearfix">
-            <h1>Form Tentang OSIS</h1>
+            <h1>Form Data Kepala Sekolah</h1>
         </div>
     </section>
     <section id="content">
@@ -22,17 +22,33 @@
                         </div>
                     @endif
                     <div class="col-lg-6">
-                        <form class="row" action="{{ route('tentangosis.store') }}" method="post"
+                        <form class="row" action="{{ route('kepala.store') }}" method="post"
                               enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <div class="col-12 form-group">
-                                <label>Tentang OSIS:</label>
-                                <input type="text" name="tentang" id="tentang" class="form-control">
+                                <label>Nama Kepala Sekolah:</label>
+                                <input type="text" name="nama" id="nama" class="form-control">
                             </div>
                             <div class="col-12 form-group">
-                                <label class="form-label" for="customFile">Upload Foto:</label>
+                                <label>NIP:</label>
+                                <input type="text" name="nip" id="nip" class="form-control">
+                            </div>
+                            <div class="col-12 form-group">
+                                <label for="sel1">Jabatan:</label>
+                                <input type="text" name="jabatan" id="jabatan" class="form-control">
+                            </div>
+                            <div class="col-12 form-group">
+                                <label for="sel1">Riwayat Pendidikan:</label>
+                                <input type="text" name="riwayat" id="riwayat" class="form-control">
+                            </div>
+                            <div class="col-12 form-group">
+                                <label class="form-label" for="customFile">Upload Foto Kepala Sekolah:</label>
                                 <input type="file" class="form-control" name="foto" id="foto"/>
+                            </div>
+                            <div class="col-12 form-group">
+                                <label for="sel1">Ucapan:</label>
+                                <input type="text" name="ucapan" id="ucapan" class="form-control">
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary" type="submit">Simpan</button>
@@ -42,12 +58,15 @@
 
                 </div>
                 <div class="row">
-                    <h6 class="text-center">Daftar Tentang OSIS</h6>
+                    <h5 class="text-center">Data Kepala Sekolah</h5>
                     <div>
                         <table class="table table-striped" id="myTable">
                             <thead>
                             <tr>
-                                <th>Tentang OSIS</th>
+                                <th>Nama Kepala Sekolah</th>
+                                <th>NIP</th>
+                                <th>Jabatan</th>
+                                <th>Riwayat</th>
                                 <th>Foto</th>
                                 <th>Aksi</th>
                             </tr>
@@ -71,11 +90,23 @@
             var table = $('#myTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('tentangosis.data') }}",
+                ajax: "{{ route('kepala.data') }}",
                 columns: [{
-                    data: 'tentang',
-                    name: 'tentang'
-                },
+                    data: 'nama',
+                    name: 'nama'
+                    },
+                    {
+                        data: 'nip',
+                        name: 'nip'
+                    },
+                    {
+                        data: 'jabatan',
+                        name: 'jabatan'
+                    },
+                    {
+                        data: 'riwayat',
+                        name: 'riwayat'
+                    },
                     {
                         data: 'foto',
                         name: 'foto'
@@ -100,7 +131,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "{{ route('tentangosis.index') }}/" + id,
+                            url: "{{ route('kepala.index') }}/" + id,
                             method: "DELETE",
                             success: function (response) {
                                 table.ajax.reload();
@@ -127,4 +158,3 @@
         });
     </script>
 @endpush
-

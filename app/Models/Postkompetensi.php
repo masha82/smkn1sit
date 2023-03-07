@@ -14,6 +14,6 @@ class Postkompetensi extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_keahlian', 'isi', 'foto'];
+    protected $fillable = ['nama_keahlian', 'isi', 'foto'];
 
 }

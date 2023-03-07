@@ -1,8 +1,8 @@
 @extends('layouts.master');
 @push('css')
-    {{-- <link rel="stylesheet" href="{{ url('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ url('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
-{{--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">--}}
+
 @section('title')
     <title>Form Berita</title>
 @endsection
@@ -56,14 +56,13 @@
 
                 </div>
                 <div class="row">
-                    <h6 class="text-center">Daftar Berita</h6>
+                    <h3 class="text-center">Daftar Berita</h3>
                     <div>
                         <table class="table table-striped" id="myTable">
                             <thead>
                             <tr>
                                 <th>Judul</th>
                                 <th>Kategori</th>
-                                <th>Isi</th>
                                 <th>Foto</th>
                                 <th>Aksi</th>
                             </tr>
@@ -79,27 +78,12 @@
     </section>
 @endsection
 @push('js')
-    {{-- <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('.summernote').summernote({
-                toolbar: [
-                    // [groupName, [list of button]]
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']],
-                    ['link', ['link']]
-                ]
-            });
-            var table = $('#myTable').DataTable({
+         $(document).ready(function () {
+           var table = $('#myTable').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('berita.data') }}",
@@ -110,10 +94,6 @@
                     {
                         data: 'kategori',
                         name: 'kategori'
-                    },
-                    {
-                        data: 'isi',
-                        name: 'isi'
                     },
                     {
                         data: 'foto',
@@ -162,6 +142,18 @@
             };
             $('body').on('click', '.hapus-data', function () {
                 del($(this).attr('data-id'));
+            });
+            $('.summernote').summernote({
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['link', ['link']]
+                ]
             });
         });
     </script>

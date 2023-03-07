@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Video;
+use App\Traits\Table;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class VideoController extends Controller
 {
@@ -12,6 +14,10 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use Table;
+
+    protected $model = Video::class;
+
     public function index()
     {
         return view('video');
