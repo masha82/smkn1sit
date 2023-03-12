@@ -14,6 +14,6 @@ class Jadwalpelajaran extends Model
      *
      * @var array
      */
-    protected $fillable = ['thn_ajaran', 'semester', 'file'];
+    protected $fillable = ['thn_ajaran', 'semester', 'keterangan', 'file'];
 
 }

@@ -19,7 +19,8 @@ class PostKompController extends Controller
     protected $model = Postkompetensi::class;
     public function index()
     {
-        return view('kompetensi');
+        $data = Postkompetensi::orderBy('created_at', 'DESC')->get();
+        return view('jurusan', compact('data'));
     }
 
     /**

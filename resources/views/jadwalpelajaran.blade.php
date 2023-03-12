@@ -18,6 +18,7 @@
                         <tr>
                             <th>Tahun Ajaran</th>
                             <th>Semester</th>
+                            <th>Keterangan</th>
                             <th>File</th>
                             <th>Unduh</th>
                         </tr>
@@ -31,8 +32,9 @@
         </div>
 @endsection
 @push('js')
-    {{-- <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script> --}}
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
     <script>
         $(document).ready(function () {
             var table = $('#myTable').DataTable({
@@ -46,6 +48,10 @@
                     {
                         data: 'semester',
                         name: 'semester'
+                    },
+                    {
+                        data: 'keterangan',
+                        name: 'keterangan'
                     },
                     {
                         data: 'file',

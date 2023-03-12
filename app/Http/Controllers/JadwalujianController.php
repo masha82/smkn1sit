@@ -93,7 +93,16 @@ class JadwalujianController extends Controller
      */
     public function anyData(Request $request)
     {
-        return DataTables::of($this->model::query())
+        return DataTables::of(Jadwalujian::query())
+            ->addColumn('semester', function ($data) {
+                $semester = "";
+                if ($data->semester == 1) {
+                    $semester = "Ganjil";
+                } elseif ($data->semester == 2) {
+                    $semester = "Genap";
+                }
+                return $semester;
+            })
             ->addColumn('action', function ($data) {
                 $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
                 return $del;

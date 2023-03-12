@@ -32,7 +32,8 @@
                                     <option><label>-- Pilih Salah Satu --</label></option>
                                     @for($i=0;$i<=2;$i++)
                                         <option
-                                            value="{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}">{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}
+                                            value="{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}
+                                            - {{\Carbon\Carbon::now()->subYear($i)->format('Y') +1}}">{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}
                                             - {{\Carbon\Carbon::now()->subYear($i)->format('Y') +1}}</option>
                                     @endfor
                                 </select>
@@ -48,7 +49,7 @@
                             </div>
                             <div class="col-12 form-group">
                                 <label for="sel1">Nama Keahlian/Jurusan:</label>
-                                <<input type="text" name="jurusan" id="Jurusan" class="form-control">
+                                <input type="text" name="jurusan" id="jurusan" class="form-control">
                             </div>
                             <div class="col-12 form-group">
                                 <label>Jumlah Siswa:</label>

@@ -87,12 +87,27 @@ class SiswaController extends Controller
      */
     public function anyData(Request $request)
     {
-        return DataTables::of($this->model::query())
+        return DataTables::of(Siswa::query())
+            ->addColumn('kelas', function ($data) {
+               $kelas="";
+               if($data->kelas == 1){
+                $kelas="X";
+               }elseif($data->kelas == 2){
+                $kelas="XI";
+               }elseif($data->kelas == 3){
+                $kelas="XII";
+               }
+               return $kelas;
+            })
+            ->addColumn('link', function ($data) {
+                $del = '<a href="' . $data->link . '" data-id="' . $data->link . '" target="_blank">unduh</a>';
+                return $del;
+            })
             ->addColumn('action', function ($data) {
                 $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
                 return $del;
             })
-            ->rawColumns(['foto', 'action'])
+            ->rawColumns(['link'])
             ->make(true);
     }
 }

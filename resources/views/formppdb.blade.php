@@ -27,12 +27,8 @@
                             @csrf
                             @method('POST')
                             <div class="col-12 form-group">
-                                <label for="sel1">Jenis PPDB:</label>
-                                <select class="form-control" name="nama" id="nama">
-                                    <option><label>-- Pilih Salah Satu --</label></option>
-                                    <option value="1">Online</option>
-                                    <option value="2">Offline</option>
-                                </select>
+                                <label for="sel1">Jenis PPDB: (Jalur Online/Offline)</label>
+                                <input type="text" name="nama" id="nama" class="form-control">
                             </div>
                             <div class="col-12 form-group">
                                 <label>Link Aplikasi:</label>

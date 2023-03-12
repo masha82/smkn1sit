@@ -21,7 +21,8 @@ class PendidikController extends Controller
 
     public function index()
     {
-        return view('pendidik');
+        $pendidik = Pendidik::orderBy('created_at', 'DESC')->get();
+        return view('pendidik', compact('pendidik'));
     }
 
     /**
@@ -57,18 +58,10 @@ class PendidikController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($id, Request $request)
-    // {
-    //     $pendidik = Bidang::findOrfail($id);
-    //     if ($request->ajax()) {
-    //         return DataTables::of(Bidang::where('id_bidang', $id))
-    //             ->addColumn('nama_pendidik', function ($data) {
-    //                 return Carbon::parse($data->nama_pendidik);
-    //             })
-    //             ->make(true);
-    //     }
-    //     return view('pendidik', compact('pendidik'));
-    // }
+    public function show($id)
+    {
+       //
+    }
 
     /**
      * Show the form for editing the specified resource.

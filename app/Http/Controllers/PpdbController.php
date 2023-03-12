@@ -87,7 +87,7 @@ class PpdbController extends Controller
      */
     public function anyData(Request $request)
     {
-        return DataTables::of($this->model::query())
+        return DataTables::of(Ppdb::query())
             ->addColumn('action', function ($data) {
                 $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
                 return $del;

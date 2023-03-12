@@ -119,7 +119,7 @@
                     },
                 ]
             });
-            var del = function (id) {
+            var del = function(id) {
                 Swal.fire({
                     title: 'Apakah anda yakin?',
                     text: "Data yang sudah terhapus tidak bisa dikembalikan lagi!",
@@ -127,21 +127,21 @@
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Ya, hapus data'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "{{ route('kepala.index') }}/" + id,
+                            url: "{{ route('gallery.index') }}/" + id,
                             method: "DELETE",
-                            success: function (response) {
+                            success: function(response) {
                                 table.ajax.reload();
                                 Swal.fire(
                                     'Terhapus!',
-                                    'File sudah dihapus',
-                                    'sukses'
+                                    'Your file has been deleted.',
+                                    'success'
                                 )
                             },
-                            failure: function (response) {
+                            failure: function(response) {
                                 swal(
                                     "Internal Error",
                                     "Oops, your note was not saved.", // had a missing comma
@@ -152,7 +152,7 @@
                     }
                 })
             };
-            $('body').on('click', '.hapus-data', function () {
+            $('body').on('click', '.hapus-data', function() {
                 del($(this).attr('data-id'));
             });
         });

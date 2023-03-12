@@ -4,12 +4,13 @@
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="author" content="SemiColonWeb"/>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Stylesheets
     ============================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" type="text/css">
+
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}" type="text/css"/>
@@ -40,7 +41,7 @@
     <!-- Document Title
 	============================================= -->
     @yield('title')
-    <title>Kindergarten | Canvas</title>
+    <title>Website SMKN 1 Situbondo</title>
 
 </head>
 
@@ -127,7 +128,7 @@
                                             </a>
                                         </li>
                                         <li class="menu-item" style="">
-                                            <a class="menu-link" href="{{ url('kompetensi') }}">
+                                            <a class="menu-link" href="{{ url('jurusan') }}">
                                                 <div>KOMPETENSI KEAHLIAN</div>
                                             </a>
                                         </li>
@@ -185,7 +186,7 @@
                                             </a>
                                         </li>
                                         <li class="menu-item" style="">
-                                            <a class="menu-link" href="{{ url('jadwalujian') }}">
+                                            <a class="menu-link" href="{{ url('jadwalexam') }}">
                                                 <div>JADWAL UJIAN</div>
                                             </a>
                                         </li>
@@ -221,32 +222,32 @@
                                         <div>APLIKASI SEKOLAH</div>
                                     </a>
                                     <ul class="sub-menu-container" style="">
+                                        @php
+                                            $links = App\Models\Aplikasi::all();
+                                        @endphp
+                                        @foreach ($links as $item)
                                         <li class="menu-item" style="">
-                                            <a class="menu-link" href="{{ url('appschool') }}">
-                                                <div>DAPODIK</div>
+                                            <a class="menu-link" href="{{ $item->link }}" target="_blank">
+                                                <div>{{$item->nama}}</div>
                                             </a>
                                         </li>
-                                        <li class="menu-item" style="">
-                                            <a class="menu-link" href="{{ url('appschool') }}">
-                                                <div>E-RAPOR</div>
-                                            </a>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <li class="menu-item"><a class="menu-link" href="#">
                                         <div>PPDB</div>
                                     </a>
                                     <ul class="sub-menu-container" style="">
+                                        @php
+                                            $links = App\Models\Ppdb::all();
+                                        @endphp
+                                        @foreach ($links as $item)
                                         <li class="menu-item" style="">
-                                            <a class="menu-link" href="{{ url('ppdb') }}">
-                                                <div>JALUR ONLINE</div>
+                                            <a class="menu-link" href="{{ $item->link }}" target="_blank">
+                                                <div>{{$item->nama}}</div>
                                             </a>
                                         </li>
-                                        <li class="menu-item" style="">
-                                            <a class="menu-link" href="{{ url('ppdb') }}">
-                                                <div>JALUR OFFLINE</div>
-                                            </a>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <li class="menu-item"><a class="menu-link" href="{{ route('pendapat.create') }}">
@@ -343,11 +344,6 @@
                                                 <div>FORM DATA GURU</div>
                                             </a>
                                         </li>
-                                        {{-- <li class="menu-item" style="">
-                                            <a class="menu-link" href="{{ route('bidangpendidik.create') }}">
-                                                <div>FORM BIDANG PENDIDIK</div>
-                                            </a>
-                                        </li> --}}
                                         <li class="menu-item" style="">
                                             <a class="menu-link" href="{{ route('tenagapendidik.create') }}">
                                                 <div>FORM DATA TENAGA PENDIDIK</div>
@@ -408,23 +404,23 @@
                                         </li>
                                         <li class="menu-item" style="">
                                             <a class="menu-link" href="{{ route('kegosis.create') }}">
-                                                <div>FORM TENTANG KEGIATAN OSIS</div>
+                                                <div>FORM KEGIATAN OSIS</div>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="menu-item" style="">
                                     <a class="menu-link" href="{{ route('appschool.create') }}">
-                                        <div>FORM APLIKASI</div>
+                                        <div>APLIKASI</div>
                                     </a>
                                 </li>
                                 <li class="menu-item" style="">
                                     <a class="menu-link" href="{{ route('infoppdb.create') }}">
-                                        <div>FORM PPDB</div>
+                                        <div>PPDB</div>
                                     </a>
                                 </li>
                                 <li class="menu-item"><a class="menu-link" href="#">
-                                    <div>FORM OPINI</div>
+                                    <div>OPINI</div>
                                 </a>
                                 <ul class="sub-menu-container" style="">
                                     <li class="menu-item" style="">
@@ -438,7 +434,19 @@
                                         </a>
                                     </li>
                                 </ul>
+                                <li class="menu-item" style="">
+                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          class="d-none">
+                                        @csrf
+                                    </form>
                                 </li>
+                            </li>
                             
                             @endauth
                         </ul>
@@ -486,4 +494,11 @@
 <!-- Footer Scripts
 ============================================= -->
 <script src="{{ asset('assets/js/functions.js') }}"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @stack('js')

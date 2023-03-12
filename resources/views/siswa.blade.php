@@ -1,4 +1,8 @@
 @extends('layouts.master')
+@push('css')
+    <link rel="stylesheet" href="{{ url('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
+@endpush
 @section('title')
     <title>Siswa</title>
 @endsection
@@ -21,7 +25,6 @@
                             <th>Jurusan</th>
                             <th>Jumlah</th>
                             <th>Link</th>
-                            <th>Unduh</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -33,14 +36,15 @@
         </div>
 @endsection
 @push('js')
-    {{-- <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script> --}}
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
     <script>
         $(document).ready(function () {
             var table = $('#myTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('siswasekolah.index') }}",
+                ajax: "{{ route('siswasekolah.data') }}",
                 columns: [{
                     data: 'thn_ajaran',
                     name: 'thn_ajaran'
@@ -50,8 +54,8 @@
                         name: 'kelas'
                     },
                     {
-                        data: 'id_keahlian',
-                        name: 'id_keahlian'
+                        data: 'jurusan',
+                        name: 'jurusan'
                     },
                     {
                         data: 'jumlah',
@@ -60,13 +64,8 @@
                     {
                         data: 'link',
                         name: 'link'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    },
+                    }
+                
                 ]
             });
         });

@@ -18,8 +18,16 @@ class JadwalpelajaranController extends Controller
 
     protected $model = Jadwalpelajaran::class;
 
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            return DataTables::of(Jadwalpelajaran::query())
+                ->addColumn('action', function ($data) {
+                    $download = '<a target="_blank" href="' . url('file_jadwal/' . $data->file) . '" data-id="' . $data->id . '" class="btn btn-primary">Unduh</a>';
+                    return $download;
+                })
+                ->make(true);
+        }
         return view('jadwalpelajaran');
     }
 
@@ -92,7 +100,16 @@ class JadwalpelajaranController extends Controller
      */
     public function anyData(Request $request)
     {
-        return DataTables::of($this->model::query())
+        return DataTables::of(Jadwalpelajaran::query())
+            ->addColumn('semester', function ($data) {
+                $semester = "";
+                if ($data->semester == 1) {
+                    $semester = "Ganjil";
+                } elseif ($data->semester == 2) {
+                    $semester = "Genap";
+                }
+                return $semester;
+            })
             ->addColumn('action', function ($data) {
                 $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
                 return $del;

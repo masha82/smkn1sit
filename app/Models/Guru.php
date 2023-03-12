@@ -15,7 +15,6 @@ class Guru extends Model
      * @var array
      */
     protected $fillable = ['nama_guru', 'nip', 'id_mapel', 'foto'];
-    protected $attributes = ['id_mapel'];
     protected $with = ['mapel'];
 
     public function mapel(): BelongsTo

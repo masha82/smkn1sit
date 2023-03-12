@@ -24,8 +24,8 @@ class GuruController extends Controller
 
     public function index()
     {
-        $guruschool = Guru::orderBy('created_at', 'DESC')->first();
-        return view('guru', compact('guruschool'));
+        $guru = Guru::orderBy('created_at', 'DESC')->get();
+        return view('guru', compact('guru'));
     }
 
     /**

@@ -84,13 +84,7 @@ class KepsekController extends Controller
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function anyData(Request $request)
     {
         return DataTables::of($this->model::query())
@@ -99,10 +93,14 @@ class KepsekController extends Controller
                 return $foto;
             })
             ->addColumn('action', function ($data) {
-                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
+                $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Delete</a>';
                 return $del;
             })
             ->rawColumns(['foto', 'action'])
             ->make(true);
+    }
+    public function destroy($id)
+    {
+        $this->model::destroy($id);
     }
 }

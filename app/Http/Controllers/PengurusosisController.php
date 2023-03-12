@@ -20,7 +20,8 @@ class PengurusosisController extends Controller
 
     public function index()
     {
-        return view('pengurusosis');
+        $pengurus = Pengurusosis::orderBy('created_at', 'DESC')->get();
+        return view('pengurusosis', compact('pengurus'));
     }
 
     /**

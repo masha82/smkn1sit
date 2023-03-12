@@ -14,10 +14,12 @@
                     <div class="heading-block">
                         <h3><strong>Kepala SMKN 1 Situbondo</strong></h3>
                     </div>
-                    {!! $kepala->nama !!} <br>
-                    {!! $kepala->nip !!} <br>
-                    {!! $kepala->riwayat !!} <br>
+                    <div>
+                    <label>Nama: {!! $kepala->nama !!} </label><br>
+                    <label>NIP:  {!! $kepala->nip !!}  </label><br>
+                    <label>Pendidikan Terakhir: {!! $kepala->riwayat !!} </label><br>
                     {!! $kepala->ucapan !!} <br>
+                    <div>
                 </div>
             </div>
         </div>

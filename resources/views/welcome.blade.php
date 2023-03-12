@@ -35,6 +35,7 @@
             -->
                 </div>
                 <div class="col-lg-6 align-self-end mt-5 mt-lg-0">
+                    <br><br>
                     <img src="{{ asset('assets/demos/kindergarten/images/Bu-Susiana.png') }}" alt="Hero Bg">
                 </div>
             </div>
@@ -173,7 +174,7 @@
             </div>
 
             <div class="col-auto text-center mt-4 text-smaller pb-3 font-primary">
-                Copyrights © 2014 All Rights Reserved by Canvas Inc.
+                SMKN 1 Situbondo - Solusi Tepat Menjawab Tantangan 
             </div>
         </footer>
     </section>

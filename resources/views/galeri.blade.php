@@ -18,9 +18,9 @@
     </div>
 </div>
 <div class="row posts-md col-mb-30">
+    @foreach ($galeri as $item)
     <div class="masonry-thumbs grid-container grid-4 has-init-isotope" data-big="3" data-lightbox="gallery"
          style="position: relative; height: 295.664px;">
-        @foreach ($galeri as $item)
             <a class="grid-item" href="{{ asset('galerifoto/' . $item->foto) }}" data-lightbox="gallery-item"
                style="position: absolute; left: 0%; top: 0px;">
                 <div class="grid-inner">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </a>
-        @endforeach
     </div>
+    @endforeach
 </div>
 @endsection

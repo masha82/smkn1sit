@@ -32,7 +32,8 @@
                                     <option><label>-- Pilih Salah Satu --</label></option>
                                     @for($i=0;$i<=2;$i++)
                                         <option
-                                            value="{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}">{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}
+                                            value="{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}
+                                            - {{\Carbon\Carbon::now()->subYear($i)->format('Y') +1}}">{{\Carbon\Carbon::now()->subYear($i)->format('Y')}}
                                             - {{\Carbon\Carbon::now()->subYear($i)->format('Y') +1}}</option>
                                     @endfor
                                 </select>
@@ -44,6 +45,10 @@
                                     <option value="1">Ganjil</option>
                                     <option value="2">Genap</option>
                                 </select>
+                            </div>
+                            <div class="col-12 form-group">
+                                <label class="form-label" for="customFile">Keterangan:</label>
+                                <input type="text" class="form-control" name="keterangan" id="keterangan"/>
                             </div>
                             <div class="col-12 form-group">
                                 <label class="form-label" for="customFile">Upload Jadwal Pelajaran:</label>
@@ -64,6 +69,7 @@
                             <tr>
                                 <th>Tahun Ajaran</th>
                                 <th>Semester</th>
+                                <th>Keterangan</th>
                                 <th>File</th>
                                 <th>Aksi</th>
                             </tr>
@@ -95,6 +101,10 @@
                     data: 'semester',
                     name: 'semester'
                 }, {
+                    data: 'keterangan',
+                    name: 'keterangan'
+                },
+                {
                     data: 'file',
                     name: 'file'
                 },
