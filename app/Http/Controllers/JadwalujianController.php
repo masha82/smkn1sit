@@ -18,12 +18,19 @@ class JadwalujianController extends Controller
 
     protected $model = Jadwalujian::class;
 
-
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            return DataTables::of(Jadwalujian::query())
+                ->addColumn('action', function ($data) {
+                    $download = '<a target="_blank" href="' . url('file_ujian/' . $data->file) . '" data-id="' . $data->id . '" class="btn btn-primary">Unduh</a>';
+                    return $download;
+                })
+                ->make(true);
+        }
         return view('jadwalujian');
     }
-
+   
     /**
      * Show the form for creating a new resource.
      *

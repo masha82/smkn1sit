@@ -21,7 +21,7 @@ class KegiatanosisController extends Controller
 
     public function index()
     {
-        // $kegosis = Kegiatanosis::orderBy('created_at', 'DESC')->first();
+        $kegosis = Kegiatanosis::orderBy('created_at', 'DESC')->first();
         return view('kegiatanosis', compact('kegosis'));
     }
 

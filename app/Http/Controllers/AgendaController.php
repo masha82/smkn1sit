@@ -18,7 +18,7 @@ class AgendaController extends Controller
     protected $model = Agenda::class;
     public function index()
     {
-        // $agenda = Agenda::orderBy('created_at', 'DESC')->first();
+        $agenda = Agenda::orderBy('created_at', 'DESC')->first();
         return view('agenda', compact('agenda'));
     }
 

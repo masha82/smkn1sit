@@ -24,6 +24,7 @@
                             <th>Semester</th>
                             <th>Nama Ujian</th>
                             <th>File</th>
+                            <th>Unduh</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -43,7 +44,7 @@
             var table = $('#myTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('jadwalexam.data') }}",
+                ajax: "{{ route('jadwalexam.index') }}",
                 columns: [{
                     data: 'thn_ajaran',
                     name: 'thn_ajaran'
@@ -60,6 +61,12 @@
                         data: 'file',
                         name: 'file'
                     },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    }
                 ]
             });
         });
