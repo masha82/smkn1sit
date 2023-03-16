@@ -39,8 +39,7 @@
                                 </div>
                             </div>
                             <div class="portfolio-desc">
-                                <h3><a href="portfolio-single.html"> {!! $item->nama_keahlian !!} </a></h3>
-                                {{-- <span><a href="#">Media</a>, <a href="#">Icons</a></span> --}}
+                                <h3><a href={{route('jurusan.show',$item->id)}}> {!! $item->nama_keahlian !!} </a></h3>
                             </div>
                         </div>
                     @endforeach

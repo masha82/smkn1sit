@@ -18,8 +18,8 @@ class AgendaController extends Controller
     protected $model = Agenda::class;
     public function index()
     {
-        $agenda = Agenda::orderBy('created_at', 'DESC')->first();
-        return view('agenda', compact('agenda'));
+        $data = Agenda::orderBy('created_at', 'DESC')->paginate(20);
+        return view('agenda', compact('data'));
     }
 
     /**
@@ -57,7 +57,9 @@ class AgendaController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Agenda::findOrFail($id);
+        $agenda = Agenda::orderBy('created_at', 'DESC')->paginate(5);
+        return view('showagenda', compact('data', 'agenda'));
     }
 
     /**
@@ -93,8 +95,8 @@ class AgendaController extends Controller
     {
         return DataTables::of($this->model::query())
             ->addColumn('foto', function ($data) {
-                $del = '<img src="' . asset('gambar_agenda/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
-                return  $del;
+                $foto = '<img src="' . asset('gambar_agenda/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+                return  $foto;
             })
             ->addColumn('action', function ($data) {
                 $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';

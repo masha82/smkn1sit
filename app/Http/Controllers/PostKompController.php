@@ -58,7 +58,9 @@ class PostKompController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Postkompetensi::findOrFail($id);
+        $jurusan = Postkompetensi::orderBy('created_at', 'DESC')->paginate(5);
+        return view('showjurusan', compact('data', 'jurusan'));
     }
 
     /**

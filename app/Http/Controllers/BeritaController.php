@@ -60,7 +60,7 @@ class BeritaController extends Controller
     public function show($id)
     {
         $data = Berita::findOrFail($id);
-        $berita = Berita::orderBy('created_at', 'DESC')->take(5);
+        $berita = Berita::orderBy('created_at', 'DESC')->paginate(5);
         return view('shownews', compact('data', 'berita'));
     }
 
