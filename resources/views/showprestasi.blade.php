@@ -15,7 +15,7 @@
 
 
             <div class="entry clearfix">
-                <h2 class="mb-3 fw-bold h1"> {{$data->judul}}</h2>
+                <h2 class="mb-3 fw-bold h1"> {{$data->nama_prestasi}}</h2>
                 <div class="entry-meta d-flex justify-content-between mb-4">
                     <ul>
                         <li><i class="icon-time"></i><a
@@ -26,14 +26,14 @@
                 </div>
 
                 <div class="entry-image">
-                    <a href="demo-news-single.html"><img src="{{asset('gambar/' . $data->file)}}" alt="Image 3"></a>
+                    <a href="demo-news-single.html"><img src="{{asset('gambar_prestasi/' . $data->foto)}}" alt="Image 3"></a>
 
                 </div>
 
-                <div class="entry-content mt-0">
+                {{-- <div class="entry-content mt-0">
 
                     {!! $data->isi!!}
-                </div>
+                </div> --}}
 
             </div>
 
@@ -48,18 +48,18 @@
                 <div class="widget clearfix">
                     <h3 class="font-secondary fw-medium h4">Prestasi Terbaru</h3>
                     <div class="row posts-md col-mb-30">
-                        {{-- @foreach ($berita as $item)
+                        @foreach ($prestasii as $item)
                             <article class="entry col-12">
                                 <div class="grid-inner row gutter-20">
                                     <div class="col-md-4">
                                         <a class="entry-image" href="#"><img
-                                                src="{{ asset('gambar/' . $item->file) }}"
+                                                src="{{ asset('gambar_prestasi/' . $item->file) }}"
                                                 alt="Image"></a>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="entry-title title-xs">
-                                            <h3><a href="{{route('news.show', $item->id)}}"
-                                                   class="stretched-link color-underline">{{ $item->judul }}</a>
+                                            <h3><a href="{{route('achievement.show', $item->id)}}"
+                                                   class="stretched-link color-underline">{{ $item->nama_prestasi }}</a>
                                             </h3>
                                         </div>
                                         <div class="entry-meta">
@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                             </article>
-                        @endforeach --}}
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -131,7 +131,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "{{ route('gallery.index') }}/" + id,
+                            url: "{{ route('kepala.index') }}/" + id,
                             method: "DELETE",
                             success: function(response) {
                                 table.ajax.reload();

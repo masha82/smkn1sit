@@ -99,6 +99,11 @@ class PostKompController extends Controller
                 $foto = '<img src="' . asset('foto_kompetensi/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
                 return $foto;
             })
+
+            ->addColumn('isi', function ($data) {
+                return substr(strip_tags(str_replace('&nbsp;', ' ', $data->isi)),0,100) .'....';
+            })
+            
             ->addColumn('action', function ($data) {
                 $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
                 return $del;

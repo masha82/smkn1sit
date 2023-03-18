@@ -20,7 +20,8 @@ class PejabatController extends Controller
 
      public function index()
     {
-        return view('pejabat');
+        $pejabat = Pejabat::orderBy('created_at', 'DESC')->get();
+        return view('pejabat', compact('pejabat'));
     }
 
     /**

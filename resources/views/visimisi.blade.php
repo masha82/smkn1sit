@@ -16,7 +16,7 @@
                 <div class="heading-block fancy-title border-bottom-0 title-bottom-border">
                     <h1>Visi Sekolah</h1>
                 </div>
-                    <h3><p>{!! $visischool->visi !!}</p></h3>
+                    <h3><p>{!! $visi->visi !!}</p></h3>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
                 <div class="heading-block fancy-title border-bottom-0 title-bottom-border">
                     <h1>Misi Sekolah</h1>
                 </div>
-                    <h3><p>{!! $visischool->misi !!}</p></h3>
+                    <h3><p>{!! $visi->misi !!}</p></h3>
                 </div>
         </div>
     </div>

@@ -20,6 +20,7 @@ class PrestasiController extends Controller
 
     public function index()
     {
+        $data = Prestasi::orderBy('created_at','DESC')->first();
         return view('prestasi');
     }
 
@@ -56,9 +57,11 @@ class PrestasiController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        $data = Prestasi::findOrFail($id);
+        $prestasii = Prestasi::orderBy('created_at', 'DESC')->paginate(5);
+        return view('showprestasi', compact('data', 'prestasii'));
     }
 
     /**

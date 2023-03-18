@@ -50,12 +50,12 @@
                             <tr>
                                 <th>Visi</th>
                                 <th> :</th>
-                                <td>{{$visi->visi}}</td>
+                                <td>{{ $visi->visi }}</td>
                             </tr>
                             <tr>
                                 <th>Misi</th>
                                 <th> :</th>
-                                <td>{!! $visi->misi !!}</td>
+                                <td>{{ $visi->misi }}</td>
                             </tr>
                             </thead>
                         </table>

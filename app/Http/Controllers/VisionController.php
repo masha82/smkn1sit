@@ -20,8 +20,8 @@ class VisionController extends Controller
 
     public function index()
     {
-        $visischool = Visi::orderBy ('created_at', 'DESC')->first();
-        return view('visimisi', compact('visischool'));
+        $visi = Visi::orderBy('created_at', 'DESC')->first();
+        return view('visimisi', compact('visi'));
     }
 
     /**
@@ -31,6 +31,7 @@ class VisionController extends Controller
      */
     public function create()
     {
+        $visi = Visi::orderBy('created_at','DESC')->first();
         return view('formvisimisi', compact('visi'));
     }
 
