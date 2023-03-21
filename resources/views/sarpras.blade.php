@@ -6,60 +6,41 @@
 @section('title')
     <title>Sarpras</title>
 @endsection
-@section('content') 
-    <section id="page-title">
-        <div class="container clearfix">
-            <h1>Sarana Prasarana SMKN 1 Situbondo</h1>
-        </div>
-    </section>
-            
-    <div>
-        <div class="container topmargin bottommargin-lg clearfix">
-            <div class="row col-mb-50 mb-0">
-                <div class="col-lg-8">
-                    <table class="table table-striped" id="myTable">
-                        <thead>
-                        <tr>
-                            <th>Nama Sarana Prasarana</th>
-                            <th>Jenis Ruang</th>
-                            <th>View</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+@section('content')
+<section id="page-title">
+    <div class="container clearfix">
+        <h1>Sarana Prasarana</h1>
+    </div>
+</section>
+    <div class="container mt-4">
+        <div class="row col-mb-30">
+            @foreach ($data as $item)
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 h-100 shadow-sm">
+                    <h3 class="card-header font-primary p-4 color1">{{ $item->nama_sarpras }}</h3>
+                    <div class="card-body p-4">
+                        Sarana Prasarana
+                        <ul class="ps-3 mt-4 mb-0">
+                            <li class="mb-3">{{ $item->jenis_ruang }}</li>
+                            <li class="mb-3">
+                                @php
+                                if ($item->kondisi == 1) {
+                                    echo "Baik";
+                                } elseif ($item->kondisi == 2) {
+                                    echo "Rusak Ringan";
+                                } elseif ($item->kondisi == 3) {
+                                    echo "Rusak Berat";
+                                }
+                            @endphp
+                            </li>
+                        </ul>
+                        <a href="{{route('sarana.show',$item->id)}}" class="more-link fst-normal ms-3">Lihat selengkapnya <i
+                                class="icon-line-arrow-right"></i></a>
+                    </div>
                 </div>
-                </div>
-                
             </div>
+            @endforeach
+          
         </div>
+    </div>
 @endsection
-@push('js')
-    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            var table = $('#myTable').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: "{{ route('sarana.index') }}",
-                columns: [{
-                    data: 'nama_sarpras',
-                    name: 'nama_sarpras'
-                },
-                    {
-                        data: 'jenis_ruang',
-                        name: 'jenis_ruang'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    },
-                ]
-            });
-        });
-    </script>
-@endpush

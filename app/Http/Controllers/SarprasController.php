@@ -20,7 +20,7 @@ class SarprasController extends Controller
 
     public function index()
     {
-        $data = Sarpras::orderBy('created_at', 'DESC')->paginate(20);
+        $data = Sarpras::orderBy('created_at', 'DESC')->paginate(9);
         return view('sarpras', compact('data'));
     }
 
@@ -59,7 +59,9 @@ class SarprasController extends Controller
      */
     public function show($id)
     {
-       //
+        $data = Sarpras::findOrFail($id);
+        $sarana = Sarpras::orderBy('created_at', 'DESC')->paginate(5);
+        return view('showsarpras', compact('data', 'sarana'));
     }
 
     /**
@@ -95,6 +97,17 @@ class SarprasController extends Controller
     public function anyData(Request $request)
     {
         return DataTables::of($this->model::query())
+            ->addColumn('kondisi', function ($data) {
+                $kondisi = "";
+                if ($data->kondisi == 1) {
+                    $kondisi = "Baik";
+                } elseif ($data->kondisi == 2) {
+                    $kondisi = "Rusak Ringan";
+                } elseif ($data->kondisi == 3) {
+                    $kondisi = "Rusak Berat";
+                }
+                return $kondisi;
+            })
             ->addColumn('foto', function ($data) {
                 $foto = '<img src="' . asset('gambar_sarpras/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
                 return $foto;

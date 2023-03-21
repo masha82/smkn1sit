@@ -51,7 +51,7 @@
                                     <option>-- Pilih Salah Satu --</option>
                                     <option value="1">Baik</option>
                                     <option value="2">Rusak Ringan</option>
-                                    <option value="3">Rusak</option>
+                                    <option value="3">Rusak Berat</option>
                                 </select>
                             </div>
                             <div class="col-12 form-group">

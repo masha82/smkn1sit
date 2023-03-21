@@ -9,8 +9,6 @@
             <!-- Posts Area
         ============================================= -->
             <div class="col-lg-8">
-
-
                 <div class="entry clearfix">
                     <h2 class="mb-3 fw-bold h1"> {{$data->judul}}</h2>
                     <div class="entry-meta d-flex justify-content-between mb-4">
