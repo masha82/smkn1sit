@@ -6,11 +6,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
           integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <style>
+    .img-fit {
+        display: block;
+        max-height: 200px;
+        width: auto;
+        height: auto;
+        object-fit: cover !important;
+    }
+    </style>
 @endpush
+
 @section('content')
-    <section id="page-title">
+<section id="page-title">
+    <div class="container clearfix">
+        <h1>Kompetensi Keahlian/Jurusan di SMKN 1 Situbondo</h1>
+    </div>
+</section>
         <div class="container clearfix">
-            <h1>Kompetensi Keahlian/Jurusan di SMKN 1 Situbondo</h1>
+            <div class="topmargin-sm center">
+        </div>
             <div class="col-md-12">
                 <div class="line mt-0"></div>
                 <div id="oc-portfolio" class="owl-carousel portfolio-carousel carousel-widget" data-margin="1"
@@ -19,18 +34,18 @@
                     @foreach($data as $item)
                         <div class="portfolio-item">
                             <div class="portfolio-image">
-                                <a href="portfolio-single.html">
+                                <a href="{{route('jurusan.show',$item->id)}}">
                                     <img src="{{asset('foto_kompetensi/'.$item->foto)}}" alt="Image">
                                 </a>
                                 <div class="bg-overlay">
                                     <div class="bg-overlay-content dark" data-hover-animate="fadeIn"
                                          data-hover-speed="350">
-                                        <a href="images/portfolio/full/1.jpg"
+                                        <a href="{{asset('foto_kompetensi/'.$item->foto)}}"
                                            class="overlay-trigger-icon bg-light text-dark"
                                            data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeInUpSmall"
                                            data-hover-speed="350" data-lightbox="image"><i
                                                 class="icon-line-plus"></i></a>
-                                        <a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark"
+                                        <a href="{{route('jurusan.show',$item->id)}}" class="overlay-trigger-icon bg-light text-dark"
                                            data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeInUpSmall"
                                            data-hover-speed="350"><i class="icon-line-ellipsis"></i></a>
                                     </div>
@@ -44,12 +59,8 @@
                         </div>
                     @endforeach
                 </div>
-
-                <div class="line"></div>
             </div>
         </div>
-    </section>
-
 @endsection
 @push('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"

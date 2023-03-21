@@ -28,6 +28,9 @@
                     </table>
                 </div>
                 </div>
+                <div class="row mb-3">
+                    {{ $data->links('layouts.paginate') }}
+                </div>
             </div>
         </div>
 @endsection

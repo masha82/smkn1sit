@@ -9,7 +9,7 @@
 @section('content')
     <section id="page-title">    
         <div class="container clearfix">
-            <h1>Form Pejabat Sekolah</h1>
+            <h1>Form Pejabat Sekolah (Wakil Kepala Sekolah)</h1>
         </div>
     </section>
     <section id="content">
@@ -27,7 +27,7 @@
                             @csrf
                             @method('POST')
                             <div class="col-12 form-group">
-                                <label>Nama Pejabat:</label>
+                                <label>Nama Pejabat (Wakil Kepala Sekolah):</label>
                                 <input type="text" name="nama" id="nama" class="form-control">
                             </div>
                             <div class="col-12 form-group">
@@ -36,13 +36,7 @@
                             </div>
                             <div class="col-12 form-group">
                                 <label for="sel1">Jabatan:</label>
-                                <select class="form-control" name="jabatan" id="jabatan">
-                                    <option><label>-- Pilih Salah Satu --</label></option>
-                                    <option value="1">WAKA KURIKULUM</option>
-                                    <option value="2">WAKA KESISWAAN</option>
-                                    <option value="3">WAKA SARPRAS</option>
-                                    <option value="4">WAKA HUMAS</option>
-                                </select>
+                                <input type="text" name="jabatan" id="jabatan" class="form-control">
                             </div>
                             <div class="col-12 form-group">
                                 <label class="form-label" for="customFile">Upload Foto Pejabat:</label>
@@ -56,7 +50,7 @@
 
                 </div>
                 <div class="row">
-                    <h6 class="text-center">Daftar Pejabat Sekolah</h6>
+                    <h6 class="text-center">Daftar Pejabat (Wakil Kepala Sekolah)</h6>
                     <div>
                         <table class="table table-striped" id="myTable">
                             <thead>

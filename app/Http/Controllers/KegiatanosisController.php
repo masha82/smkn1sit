@@ -18,11 +18,10 @@ class KegiatanosisController extends Controller
 
     protected $model = Kegiatanosis::class;
 
-
     public function index()
     {
-        $kegosis = Kegiatanosis::orderBy('created_at', 'DESC')->first();
-        return view('kegiatanosis', compact('kegosis'));
+        $data = Kegiatanosis::orderBy('created_at', 'DESC')->paginate(20);
+        return view('kegiatanosis', compact('data'));
     }
 
     /**
@@ -60,7 +59,9 @@ class KegiatanosisController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Kegiatanosis::findOrFail($id);
+        $kegiatan = Kegiatanosis::orderBy('created_at', 'DESC')->paginate(5);
+        return view('showkegiatan', compact('data', 'kegiatan'));
     }
 
     /**

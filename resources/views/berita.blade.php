@@ -3,9 +3,14 @@
     <title>Berita</title>
 @endsection
 @section('content')
-    <section id="page-title">
+<section id="page-title">
+    <div class="container clearfix">
+        <h1>Prestasi SMKN 1 Situbondo</h1>
+    </div>
+</section>
         <div class="container clearfix">
-            <h1>Berita SMKN 1 Situbondo</h1>
+            <div class="heading-block topmargin-sm center">
+        </div>
             <div class="postcontent mt-6 col-lg-12">
                 <div id="posts" class="row gutter-40 mb-0">
                     @foreach ($data as $item)
@@ -42,13 +47,8 @@
                     @endforeach
                 </div>
                 <div class="row mb-3">
-                    <div class="col-12">
-                        {{ $data->links() }}
-                    </div>
+                    {{ $data->links('layouts.paginate') }}
                 </div>
-
             </div>
         </div>
-    </section>
-
 @endsection

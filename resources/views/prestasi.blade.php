@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@push('css')
+
+@endpush
 @section('title')
     <title>Prestasi Sekolah</title>
 @endsection
@@ -10,6 +13,8 @@
     </section>
     
     <div class="container clearfix">
+        <div class="heading-block topmargin-sm center">
+    </div>
         <div class="row gutter-40 col-mb-80">
             <div class="postcontent col-lg-12">
                 <div id="posts" class="row gutter-40 mb-0">
@@ -32,10 +37,10 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="entry-content">
+                                    {{-- <div class="entry-content">
                                         <a href="{{route('achievement.show',$item->id)}}" class="button button-border button-rounded">Baca
                                             selengkapnya</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <hr>
@@ -43,8 +48,9 @@
                     @endforeach
                 </div>
                 <div class="row mb-3">
-                    <div class="col-12">
-                        {{ $data->links() }}
-                    </div>
+                        {{ $data->links('layouts.paginate') }}
                 </div>
+            </div>
+        </div>
+    </div>
 @endsection

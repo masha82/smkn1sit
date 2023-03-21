@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        {{ $videos->links() }}
+                        {{ $videos->links('layouts.paginate') }}
                     </div>
                 </div>
             </div>

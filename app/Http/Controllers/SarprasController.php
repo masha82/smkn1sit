@@ -20,7 +20,8 @@ class SarprasController extends Controller
 
     public function index()
     {
-        return view('sarpras');
+        $data = Sarpras::orderBy('created_at', 'DESC')->paginate(20);
+        return view('sarpras', compact('data'));
     }
 
     /**
@@ -58,7 +59,7 @@ class SarprasController extends Controller
      */
     public function show($id)
     {
-        //
+       //
     }
 
     /**

@@ -21,7 +21,8 @@ class PengumumanController extends Controller
 
     public function index()
     {
-        return view('pengumuman');
+        $data = Pengumuman::orderBy('created_at','DESC')->paginate(5);
+        return view('pengumuman', compact('data'));
     }
 
     /**
@@ -64,7 +65,9 @@ class PengumumanController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Pengumuman::findOrFail($id);
+        $info = Pengumuman::orderBy('created_at', 'DESC')->paginate(5);
+        return view('showpengumuman', compact('data', 'info'));
     }
 
     /**
@@ -103,11 +106,15 @@ class PengumumanController extends Controller
                 $foto = '<img src="' . asset('thumbnail_pengumuman/' . $data->foto) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
                 return $foto;
             })
+            ->addColumn('file', function ($data) {
+                $file = '<img src="' . asset('file_pengumuman/' . $data->file) . '" class="col-sm-5 p-5 p-sm-0 pe-sm-3">';
+                return $file;
+            })
             ->addColumn('action', function ($data) {
                 $del = '<a href="#" data-id="' . $data->id . '" class="btn btn-danger hapus-data">Hapus</a>';
                 return $del;
             })
-            ->rawColumns(['foto', 'action'])
+            ->rawColumns(['foto', 'file', 'action'])
             ->make(true);
     }
 }

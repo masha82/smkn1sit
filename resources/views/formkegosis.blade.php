@@ -51,7 +51,7 @@
 
                 </div>
                 <div class="row">
-                    <h6 class="text-center">Daftar Ekstrakurikuler</h6>
+                    <h6 class="text-center">Daftar Kegiatan OSIS</h6>
                     <div>
                         <table class="table table-striped" id="myTable">
                             <thead>

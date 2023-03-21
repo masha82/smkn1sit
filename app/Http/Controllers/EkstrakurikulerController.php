@@ -20,7 +20,8 @@ class EkstrakurikulerController extends Controller
 
     public function index()
     {
-        return view('ekskul');
+        $data = Ekstrakurikuler::orderBy('created_at', 'DESC')->paginate(20);
+        return view('ekskul', compact('data'));
     }
 
     /**
@@ -58,7 +59,9 @@ class EkstrakurikulerController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Ekstrakurikuler::findOrFail($id);
+        $ekstra = Ekstrakurikuler::orderBy('created_at', 'DESC')->paginate(5);
+        return view('showekstra', compact('data', 'ekstra'));
     }
 
     /**
